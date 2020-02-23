@@ -49,5 +49,14 @@ class UsersTableSeeder extends Seeder
             'typeUser' => 'Cliente',
             'email' => 'mario@alu.ua.es'
         ]);
+        DB::table('users')->insert([
+            'dni' => '67442451L',
+            'name' => 'Maria',
+            'surnames' => 'Conejero Martinez',
+            'adress' => 'Madrid',
+            'phone' => '654892918',
+            'typeUser' => 'Cliente',
+            'email' => 'maria@alu.ua.es'
+        ]);
     }
 }

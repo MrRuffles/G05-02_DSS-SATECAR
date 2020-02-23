@@ -22,10 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('typeUser'); 
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            //$table->timestamp('email_verified_at')->nullable();
+            //$table->string('password');
+            //$table->rememberToken();
+            //$table->timestamps();
         });
     }
 

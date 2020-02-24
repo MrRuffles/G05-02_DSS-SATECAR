@@ -9,6 +9,11 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
+
+    public function cars(){
+        return $this->belongsToMany('App\Car');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -35,7 +40,4 @@ class User extends Authenticatable
    /* protected $casts = [
         'email_verified_at' => 'datetime',
     ];*/
-    public function cars(){
-        return $this->belongsToMany('App\Car');
-    }
 }

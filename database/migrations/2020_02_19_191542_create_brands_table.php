@@ -18,7 +18,7 @@ class CreateBrandsTable extends Migration
             $table->string('name');
             $table->date('yearofdeparture');
             $table->string('country');
-            $table->timestamps();
+            $table->string('range');
         });
     }
 

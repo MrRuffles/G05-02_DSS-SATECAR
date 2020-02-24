@@ -15,7 +15,7 @@ class Car extends Model
     }
 
     protected $fillable = [
-        'enrollment','years', 'km' , 'trademark', 'color' ,'fuelConsumption' ,
+        'enrollment','years', 'km' , 'trademark', 'color' ,'fuelConsumption'
     ];
 
     /*

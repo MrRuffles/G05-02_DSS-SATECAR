@@ -20,7 +20,8 @@ class CarsTableSeeder extends Seeder
             'km' => '24000',
             'tradeMark' => '4x4',
             'color' => 'blue',
-            'fuelConsumption' => '5.6']);
+            'fuelConsumption' => '5.6',
+            'brand_id' => '1']);
         
         DB::table('cars')->insert([
             'enrollment' => '1543 KMS' ,
@@ -28,6 +29,8 @@ class CarsTableSeeder extends Seeder
             'km' => '2400',
             'tradeMark' => 'ranchera',
             'color' => 'black',
-            'fuelConsumption' => '7.2']);
-        }
+            'fuelConsumption' => '7.2',
+            'brand_id' => '1']);
+        
+    }
 }

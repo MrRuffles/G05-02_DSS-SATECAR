@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Car extends Model
 {
+    public function users(){
+        return $this->belongsToMany('App\User');
+    }
+
+    public function brand(){
+        return $this->belongsTo('App\Brand');
+    }
+
+    protected $fillable = [
+        'enrollment','years', 'km' , 'trademark', 'color' ,'fuelConsumption'
+    ];
+
+    /*
     //Devolvemos el nombre de todos lo coches
     public function showAllCars(){
         $cars = Car::all();
@@ -23,5 +36,5 @@ class Car extends Model
         var_dump($car->km);
         var_dump($car->color);
         var_dump($car->fuelConsumption);
-    }
+    }*/
 }

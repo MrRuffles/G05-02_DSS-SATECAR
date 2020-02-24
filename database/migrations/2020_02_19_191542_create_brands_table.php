@@ -16,7 +16,7 @@ class CreateBrandsTable extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->date('yearofdeparture');
+            $table->integer('yearofdeparture');
             $table->string('country');
             $table->string('range');
         });

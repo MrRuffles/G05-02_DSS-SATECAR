@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class BrandsTable extends Seeder
+class BrandsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class BrandsTable extends Seeder
      */
     public function run()
     {
-        // Borramos los datos de la tabla
+        //
         DB::table('brands')->delete();
         // Añadimos una entrada a esta tabla
         DB::table('brands')->insert([

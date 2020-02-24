@@ -18,7 +18,8 @@ class BrandsTableSeeder extends Seeder
             'name' => 'Abarth',
             'yearofdeparture' => '1971',
             'country' => 'Italia',
-            'range' => "Gama Alta"]);
+            'range' => "Gama Alta"
+            ]);
         DB::table('brands')->insert([
             'name' => 'Alfa Romeo',
             'yearofdeparture' => '1910',

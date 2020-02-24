@@ -14,8 +14,9 @@ class CreateCarsTable extends Migration
     public function up()
     {
         Schema::create('cars', function (Blueprint $table) {
+            $table->increments('id');
             //matricula
-            $table->string('enrollment')->primary();
+            $table->string('enrollment');
             $table->integer('years');
             $table->integer('km');
             //modelo
@@ -23,8 +24,8 @@ class CreateCarsTable extends Migration
             $table->string('color');
             //Consumo a los 100 km
             $table->float('fuelConsumption');
-            //$table->string('brand');
-            //$table->foreign->references('name')->('brands')
+            $table->integer('brand_id')->unsigned();
+            $table->foreign('brand_id')->references('id')->on('brands');
             $table->timestamps();
         });
     }

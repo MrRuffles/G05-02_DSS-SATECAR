@@ -11,5 +11,4 @@ class Brand extends Model
     }
     protected $fillable = [
         'name','yearofdeparture', 'country' , 'range'];
-
 }

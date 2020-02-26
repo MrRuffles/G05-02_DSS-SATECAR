@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Brand;
+use Illuminate\Database\Eloquent\Collection;
 class CarsTableSeeder extends Seeder
 {
     /**
@@ -21,7 +22,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => '4x4',
             'color' => 'blue',
             'fuelConsumption' => '5.6',
-            'brand_id' => '1']);
+            'brand_id' => Brand::where('name', 'Abarth')->first()->id]);
         
         DB::table('cars')->insert([
             'enrollment' => '1543 KMS' ,
@@ -30,7 +31,8 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => 'ranchera',
             'color' => 'black',
             'fuelConsumption' => '7.2',
-            'brand_id' => '1']);
+            'brand_id' => Brand::where('name', 'Abarth')->first()->id]);
         
     }
+
 }

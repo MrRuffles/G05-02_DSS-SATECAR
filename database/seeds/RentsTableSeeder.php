@@ -15,11 +15,11 @@ class RentsTableSeeder extends Seeder
         DB::table('rents')->delete();
         DB::table('rents')->insert([
             'car_id' => Car::where('enrollment', '2543 SXX')->first()->id,
-            'user_id' => User::where('name', 'Francisco Javier')->first()->id
+            'user_id' => User::where('email', 'maria@gmail.com')->first()->id
         ]);
         DB::table('rents')->insert([
             'car_id' => Car::where('enrollment', '1543 KMS')->first()->id,
-            'user_id' => User::where('name', 'Francisco Javier')->first()->id
+            'user_id' => User::where('email', 'paula@gmail.com')->first()->id
         ]);
     }
 }

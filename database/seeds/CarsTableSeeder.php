@@ -31,8 +31,34 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => 'ranchera',
             'color' => 'black',
             'fuelConsumption' => '7.2',
-            'brand_id' => Brand::where('name', 'Abarth')->first()->id]);
+            'brand_id' => Brand::where('name', 'Dacia')->first()->id]);
         
-    }
+            DB::table('cars')->insert([
+                'enrollment' => '3000 KLK' ,
+                'years' => '2',
+                'km' => '3000',
+                'tradeMark' => 'sport',
+                'color' => 'white',
+                'fuelConsumption' => '9.1',
+                'brand_id' => Brand::where('name', 'Bentley')->first()->id]);
+        
+            DB::table('cars')->insert([
+                'enrollment' => '3000 BBC' ,
+                'years' => '15',
+                'km' => '90000',
+                'tradeMark' => '4x4',
+                'color' => 'red',
+                'fuelConsumption' => '12',
+                'brand_id' => Brand::where('name', 'Bugatti')->first()->id]);
+            
+            DB::table('cars')->insert([
+                'enrollment' => '6699 GYM' ,
+                'years' => '2',
+                'km' => '5000',
+                'tradeMark' => 'sport',
+                'color' => 'white',
+                'fuelConsumption' => '9.1',
+                'brand_id' => Brand::where('name', 'Aston Martin')->first()->id]);
+        }
 
 }

@@ -44,17 +44,10 @@ class CarTest extends TestCase
         $this->assertDatabaseHas('cars', ['brand_id' => $id_brand2]);
     }
 
-    public function testBrandCar(){
-        $brand = Car::Where('enrollment', '6699 GYM')->first()->brand_id;
-        $brand2 = Car::Where('enrollment', '2543 SXX')->first()->brand_id;
-        $this->assertDatabaseHas('brands', ['id' => $brand]);
-        $this->assertDatabaseHas('brands', ['id' => $brand2]);
-
-    }
     public function testCarBrand(){
         $brand_id = Car::Where('enrollment', '6699 GYM')->first()->brand_id;
         $brand = Brand::where('id', $brand_id)->first();
-        $this->assertEquals($brand->name, 'Bugatti');
+        $this->assertEquals($brand->name, 'Aston Martin');
         $brand_id = Car::Where('enrollment', '2543 SXX')->first()->brand_id;
         $brand = Brand::where('id', $brand_id)->first();
         $this->assertEquals($brand->name, 'Abarth');

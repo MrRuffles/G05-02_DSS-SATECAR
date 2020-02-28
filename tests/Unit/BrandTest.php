@@ -5,6 +5,9 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Brand;
 use App\Car;
+use DB;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class BrandTest extends TestCase
 {
@@ -31,14 +34,31 @@ class BrandTest extends TestCase
         $this->assertDatabaseHas('brands', ['name' => 'Hispano Suiza']);
     }
 
-
-    public function testCarsByBrands()
+    public function testAssociationBrandCar()
     {
-
-        $brand = Brand::where('name', 'Abarth')->first()->id;
-        //$cars = Car::where('id', $brand);
-        //$this->assertEquals($brand->->count(), 2);
-        //$this->assertTrue($brand->cars->contains('enrollment', '1543 KMS'));
+        DB::table('brands')->insert([
+            'name' => 'Waymo',
+            'yearofdeparture' => '2015',
+            'country' => 'China',
+            'range' => "Gama Media"
+        ]);
+        
+        DB::table('cars')->insert([
+            'enrollment' => '1234 GBX' ,
+            'years' => '5',
+            'km' => '24000',
+            'tradeMark' => '4x4',
+            'color' => 'blue',
+            'fuelConsumption' => '5.6',
+            'brand_id' =>  Brand::where('name', 'Waymo')->first()->id
+        ]);
+        
+        $brand = Brand::where('name', 'Waymo')->first();
+        $car = Car::where('brand_id', $brand->id)->first();
+        $this->assertEquals($car->enrollment, '1234 GBX');
+        
+        DB::table('cars')->where('brand_id', Brand::where('name', 'Waymo')->first()->id)->delete();
+        $brand->delete();
     }
 
 

@@ -14,7 +14,14 @@ class CreateConcessionairesTable extends Migration
     public function up()
     {
         Schema::create('concessionaires', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('name');
+            $table->string('address');
+            $table->string('cif');
+            $table->string('phone');
+            $table->string('city');
+            $table->string('country');
+            $table->string('email');
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ class CreateSuffersTable extends Migration
             $table->foreign('car_id')->references('id')->on('cars');
             $table->integer('incident_id')->unsigned();
             $table->foreign('incident_id')->references('id')->on('incidents');
+            $table->date('date');
             $table->timestamps();
         });
     }

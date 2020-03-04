@@ -16,7 +16,7 @@ class CreateIncidentsTable extends Migration
         Schema::create('incidents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
-            $table->string('description');
+            $table->text('description');
             $table->float('price');
             $table->string('grade');
             $table->timestamps();

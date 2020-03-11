@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -10,7 +11,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Car;
 Route::get('/', function () {
     return view('paginaprincipal');
+});
+
+Route::get('cars', function(){
+    return view('cars'/*, ['cars' => Car::all()]*/)->with('cars', Car::all()) ;
 });

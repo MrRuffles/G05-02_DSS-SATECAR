@@ -16,12 +16,27 @@ class RentsTableSeeder extends Seeder
         DB::table('rents')->insert([
             'car_id' => Car::where('enrollment', '2543 SXX')->first()->id,
             'user_id' => User::where('email', 'maria@gmail.com')->first()->id,
-            'date' => ''
+            'date' => null
+        ]);
+        DB::table('rents')->insert([
+            'car_id' => Car::where('enrollment', '3000 KLK')->first()->id,
+            'user_id' => User::where('email', 'paula@gmail.com')->first()->id,
+            'date' => null
+        ]);
+        DB::table('rents')->insert([
+            'car_id' => Car::where('enrollment', '6699 GYM')->first()->id,
+            'user_id' => User::where('email', 'francisco@gmail.com')->first()->id,
+            'date' => null
+        ]);
+        DB::table('rents')->insert([
+            'car_id' => Car::where('enrollment', '3000 BBC')->first()->id,
+            'user_id' => User::where('email', 'anaperez@gmail.com')->first()->id,
+            'date' => null
         ]);
         DB::table('rents')->insert([
             'car_id' => Car::where('enrollment', '1543 KMS')->first()->id,
-            'user_id' => User::where('email', 'paula@gmail.com')->first()->id,
-            'date' => ''
+            'user_id' => User::where('email', 'tomas@gmail.com')->first()->id,
+            'date' => null
         ]);
     }
 }

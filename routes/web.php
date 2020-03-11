@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('cars', function(){
     return view('cars'/*, ['cars' => Car::all()]*/)->with('cars', Car::all()) ;
 });
+
+Route::get('cars/{id}', function($id){
+    return view('car'/*, ['cars' => Car::all()]*/)->with('car', Car::find($id)) ;
+});

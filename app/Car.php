@@ -14,6 +14,10 @@ class Car extends Model
         return $this->belongsTo('App\Brand');
     }
 
+    public function concessionaire(){
+        return $this->belongsTo('App\Concessionaire');
+    }
+
     protected $fillable = [
         'enrollment','years', 'km' , 'trademark', 'color' ,'fuelConsumption'
     ];

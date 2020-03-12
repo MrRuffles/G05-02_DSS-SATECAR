@@ -12,6 +12,7 @@
 |
 */
 use App\Car;
+use App\Incident;
 Route::get('/', function () {
     return view('paginaprincipal');
 });
@@ -22,4 +23,8 @@ Route::get('cars', function(){
 
 Route::get('cars/{id}', function($id){
     return view('car'/*, ['cars' => Car::all()]*/)->with('car', Car::find($id)) ;
+});
+
+Route::get('incidents', function(){
+    return view('incidents')->with('incidents', Incident::all()-> sortBy('price'));
 });

@@ -40,4 +40,10 @@ class User extends Authenticatable
    /* protected $casts = [
         'email_verified_at' => 'datetime',
     ];*/
+
+    public static function getAllUsersByDNI(){
+        $usuarios = User::orderBy('dni', 'ASC');
+        return $usuarios;
+    }
+
 }

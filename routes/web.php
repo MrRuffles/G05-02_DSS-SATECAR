@@ -23,3 +23,8 @@ Route::get('cars', function(){
 Route::get('cars/{id}', function($id){
     return view('car'/*, ['cars' => Car::all()]*/)->with('car', Car::find($id)) ;
 });
+
+
+// RUTAS RELACIONADAS CON LOS USUARIOS
+Route::get('/usuarios', 'UsersController@getAllUsers');
+//

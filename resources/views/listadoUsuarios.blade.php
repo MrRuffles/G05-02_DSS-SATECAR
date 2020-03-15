@@ -6,7 +6,7 @@
     
     <div id="botonCrearUsuarios">
         <!-- ESTE BOTON REDIRIGIRA A LA PÁGINA DE CREACIÓN DE USUARIOS -->
-        <button type="button" class="btn btn-primary btn-lg btn-block">Crear Usuario Nuevo</button> 
+        <a href="/registro" type="button" class="btn btn-primary btn-lg btn-block">Crear Usuario Nuevo</a> 
     </div>
 
     <div id="tablaDeUsuarios"> 

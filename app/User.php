@@ -41,8 +41,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];*/
 
-    public static function getAllUsersByDNI(){
-        $usuarios = User::all();
+    public static function getAllUsersByName(){
+        $usuarios = User::orderBy('name', 'ASC')->get();
         return $usuarios;
     }
 

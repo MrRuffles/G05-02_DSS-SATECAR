@@ -27,4 +27,6 @@ Route::get('cars/{id}', function($id){
 
 // RUTAS RELACIONADAS CON LOS USUARIOS
 Route::get('/usuarios', 'UsersController@getAllUsers');
+Route::get('/registro', 'UsersController@getRegistro');
+Route::post('/registro', 'UsersController@registrar');
 //

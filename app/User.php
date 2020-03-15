@@ -42,7 +42,7 @@ class User extends Authenticatable
     ];*/
 
     public static function getAllUsersByDNI(){
-        $usuarios = User::orderBy('dni', 'ASC');
+        $usuarios = User::all();
         return $usuarios;
     }
 

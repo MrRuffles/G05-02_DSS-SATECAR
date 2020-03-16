@@ -16,7 +16,7 @@
 @foreach ($incidents as $incident)
     
     <tr>
-        <th scope="row">Incident {{$incident->id}}</th> 
+        <th scope="row">{{$incident->id}}</th> 
         <td>{{$incident->type}}</td>
         <td>{{$incident->description}}</td>
         <td>{{$incident->price}}</td>
@@ -27,4 +27,5 @@
 @endforeach
 </tbody>
 </table>
+{{ $incidents->links() }}
 </html>

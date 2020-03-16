@@ -1,54 +1,56 @@
 @extends('barradenavegacion')
 @section('content')
 <h3>Registro de Usuario</h3>
-<form action="">
+<form action="{{ action('UsersController@store') }}" method="POST" role="form">
+    {{ csrf_field() }}
+    <input name="_method" type="hidden">
     <div class="form-group">
         <label for="form1-group">DNI</label>
-        <input type="text" class="form-control" id="dniUsuario" placeholder="45831413T">
+        <input type="text" class="form-control" id="dniUsuario" name="dni" placeholder="45831413T">
     </div>
     <div class="form-group">
-        <label for="form1-group">Nombre</label>
-        <input type="text" class="form-control" id="nombreUsuario" placeholder="Francisco Javier">
+        <label for="form2-group">Nombre</label>
+        <input type="text" class="form-control" id="nombreUsuario" name="name" placeholder="Francisco Javier">
     </div>
     <div class="form-group">
-        <label for="form1-group">Apellidos</label>
-        <input type="text" class="form-control" id="apellidosUsuario" placeholder="Rico Pérez">
+        <label for="form3-group">Apellidos</label>
+        <input type="text" class="form-control" id="apellidosUsuario" name="surnames" placeholder="Rico Pérez">
     </div>
     <div class="form-group">
-        <label for="form1-group">Correo Electrónico</label>
-        <input type="text" class="form-control" id="emailUsuario" placeholder="francisco@gmail.com">
+        <label for="form4-group">Correo Electrónico</label>
+        <input type="text" class="form-control" id="emailUsuario" name="email" placeholder="francisco@gmail.com">
     </div>
     <div class="form-group">
-        <label for="form1-group">Teléfono</label>
-        <input type="text" class="form-control" id="telefonoUsuario" placeholder="666666666">
+        <label for="form5-group">Teléfono</label>
+        <input type="text" class="form-control" id="telefonoUsuario" name="phone" placeholder="666666666">
     </div>
     <div class="form-group">
-        <label for="form1-group">Dirección</label>
-        <input type="text" class="form-control" id="direccionUsuario" placeholder="Murcia">
+        <label for="form6-group">Dirección</label>
+        <input type="text" class="form-control" id="direccionUsuario" name="adress" placeholder="Murcia">
     </div>
     <div>
         <label>Tipo de Usuario</label>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+            <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios1" value="Administrador">
             <label class="form-check-label" for="exampleRadios1">
                 Administrador
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios2" value="Vendedor">
             <label class="form-check-label" for="exampleRadios2">
                 Vendedor
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+            <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios3" value="Cliente">
             <label class="form-check-label" for="exampleRadios3">
                 Cliente
             </label>
         </div>
     </div>
     <div>
-        <button type="button" class="btn btn-primary btn-lg">Confirmar</button>
+        <button type="submit" class="btn btn-primary btn-lg">Confirmar</button>
         <a type="button" href="/usuarios" class="btn btn-secondary btn-lg">Cancelar</a>
     </div>
 </form>

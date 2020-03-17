@@ -21,6 +21,12 @@ class UsersController extends Controller
         return view('perfilUsuario')->with('usuario', $usuario);
     }
 
+    public function getUpdateUser($id){
+        $usuario = User::getUserById($id);
+        return view('editarUsuario')->with('usuario', $usuario);
+        
+    }
+
     public function store(Request $request){
         $this->validate($request, [
             'dni' => 'required',

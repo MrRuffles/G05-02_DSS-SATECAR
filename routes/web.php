@@ -30,4 +30,5 @@ Route::get('/usuarios', 'UsersController@getAllUsers');
 Route::get('/registro', 'UsersController@getRegistro');
 Route::post('/registro', 'UsersController@store');
 Route::get('/usuario/{id}', 'UsersController@getPerfilUser');
-//
+Route::get('/usuario/{id}/editar', 'UsersController@getUpdateUser');
+/////////////////////////////////////////////////////////////////////

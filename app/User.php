@@ -44,8 +44,17 @@ class User extends Authenticatable
     ];*/
 
     public static function getAllUsersByName(){
+        // En este caso puedo uso get para obtener los objetos por que quiero obtener una lista, get devuelve una colección
         $usuarios = User::orderBy('name', 'ASC')->get();
         return $usuarios;
     }
+
+    public static function getUserById($id){
+        // En este caso uso first por que quiero solo el primer elemento que encuentra en ese campo, first devuelve un unico objeto
+        $usuario = User::where('id', '=', $id)->first();
+        return $usuario;
+    }
+
+
 
 }

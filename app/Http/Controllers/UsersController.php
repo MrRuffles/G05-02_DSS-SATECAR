@@ -16,6 +16,11 @@ class UsersController extends Controller
         return view('registroUsuario');
     }
 
+    public function getPerfilUser($id){
+        $usuario = User::getUserById($id);
+        return view('perfilUsuario')->with('usuario', $usuario);
+    }
+
     public function store(Request $request){
         $this->validate($request, [
             'dni' => 'required',

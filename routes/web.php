@@ -29,4 +29,5 @@ Route::get('cars/{id}', function($id){
 Route::get('/usuarios', 'UsersController@getAllUsers');
 Route::get('/registro', 'UsersController@getRegistro');
 Route::post('/registro', 'UsersController@store');
+Route::get('/usuario/{id}', 'UsersController@getPerfilUser');
 //

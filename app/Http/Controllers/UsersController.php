@@ -18,7 +18,10 @@ class UsersController extends Controller
 
     public function getPerfilUser($id){
         $usuario = User::getUserById($id);
-        return view('perfilUsuario')->with('usuario', $usuario);
+        $coches_alquilados = User::getAllUserRent($id);
+        echo $coches_alquilados;
+        return view('perfilUsuario')->with('usuario', $usuario)
+                                    ->with('coches', $coches_alquilados);
     }
 
     public function getUpdateUser($id){

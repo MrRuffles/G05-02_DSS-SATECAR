@@ -40,6 +40,27 @@
     </div>
   </div>
 </div>
-
-<h3>Coches Alquilados</h3>
+@if($coches != '[]')
+    <h3>Coches Alquilados</h3>
+        <div>
+            <div id="tablaDeCoches"> 
+                <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID del Coche</th>
+                        <th>Fecha de alquiler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($coches as $coche)
+                    <tr>
+                        <td scope="row">{{$coche->car_id}}</td>
+                        <td>{{$coche->date}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                </table>
+        </div>
+</div>
+@endif
 @endsection

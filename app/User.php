@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
+use DB;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -53,6 +55,15 @@ class User extends Authenticatable
         // En este caso uso first por que quiero solo el primer elemento que encuentra en ese campo, first devuelve un unico objeto
         $usuario = User::where('id', '=', $id)->first();
         return $usuario;
+    }
+
+    // ESTA FUNCION ME DEVOLVERA TODO LOS COCHES QUE TIENE ALQUILADOS EL USUARIO
+    public static function getAllUserRent($idUsuario){
+        /*
+            select car_id, date from rents where user_id = $idUsuario
+        */
+        $coches_alquilados = DB::table('rents')->select('car_id', 'date')->where('user_id', '=', $idUsuario)->get();
+        return $coches_alquilados;
     }
 
     public static function updateUser(Request $request, $usuario){

@@ -41,4 +41,11 @@ class Car extends Model
         var_dump($car->color);
         var_dump($car->fuelConsumption);
     }*/
+
+    // ESTA FUNCION LA HE HECHO YO NO LA BORREIS AL ARREGLAR CONFLICTOS PLEASEEEE
+    public static function getCarById($id){
+        $coche = Car::where('id', '=', $id)->first();
+        return $coche;
+    }
+
 }

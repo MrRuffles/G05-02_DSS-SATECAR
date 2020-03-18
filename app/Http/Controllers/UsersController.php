@@ -56,5 +56,11 @@ class UsersController extends Controller
         User::updateUser($request, $usuario);
         return view('perfilUsuario')->with('usuario', $usuario);
     }
+    // AHORA MISMO NO SE PUEDEN BORRAR USUARIOS QUE TENGAN UN COCHE ALQUILADO, PRIMERO TENEMOS QUE ELIMINAR EL QUE ESTE ALQUILADO
+    public function delete(Request $request, $id){
+        $usuario = User::getUserById($id)->delete();
+        $usuarios = User::getAllUsersByName();
+        return view('listadoUsuarios')->with('usuarios', $usuarios);
+    }
 
 }

@@ -32,4 +32,5 @@ Route::post('/registro', 'UsersController@store'); // Realiza la accion de crear
 Route::get('/usuario/{id}', 'UsersController@getPerfilUser'); // Devuelve la vista del perfil del usuario
 Route::get('/usuario/{id}/editar', 'UsersController@getUpdateUser'); // Devuelve la vista de la pagina para editar los datos
 Route::post('/usuario/{id}/editar', 'UsersController@update'); // Realiza la acción de editar los datos
+Route::post('/usuario/{id}/borrar', 'UsersController@delete'); // Realiza la acción de borrar los datos
 /////////////////////////////////////////////////////////////////////

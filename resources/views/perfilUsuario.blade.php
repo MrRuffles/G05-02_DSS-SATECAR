@@ -16,7 +16,7 @@
     <p>Correo Electronico: {{ $usuario->email }}</p>
     <h3>Tipo de Usuario: {{ $usuario->typeUser }}</h3>
 </div>
-
+<!-- MODAL DEL BOTON DE BORRAR PERFIL -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -30,7 +30,11 @@
         *Esta acción es irreversible, no se podran recuperar los datos borrados
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger">Aceptar</button>
+      <form action="{{ action('UsersController@delete', $usuario->id) }}" method="POST">
+        {{ csrf_field() }}
+        <input name="_method" type="hidden" value="POST">
+        <button type="submit" class="btn btn-danger">Aceptar</button>
+      </form>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
       </div>
     </div>

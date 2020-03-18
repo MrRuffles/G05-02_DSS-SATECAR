@@ -1,7 +1,7 @@
 @extends('barradenavegacion')
 @section('content')
 <h3>Editar Perfil</h3>
-<form action="" method="POST" role="form">
+<form action="{{ action('UsersController@update', $usuario->id) }}" method="POST" role="form">
     {{ csrf_field() }}
     <input name="_method" type="hidden">
     <div class="form-group">

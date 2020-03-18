@@ -41,4 +41,20 @@ class UsersController extends Controller
         $usuarios = User::getAllUsersByName();
         return view('listadoUsuarios')->with('usuarios', $usuarios);
     }
+
+    public function update(Request $request, $id){ 
+        $this->validate($request, [
+            'dni' => 'required',
+            'name' => 'required',
+            'surnames' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'adress' => 'required',
+            'typeUser' => 'required'
+        ]);
+        $usuario = User::getUserById($id);
+        User::updateUser($request, $usuario);
+        return view('perfilUsuario')->with('usuario', $usuario);
+    }
+
 }

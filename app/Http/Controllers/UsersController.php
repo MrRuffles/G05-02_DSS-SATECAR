@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Car;
 
 class UsersController extends Controller
 {
@@ -18,10 +19,16 @@ class UsersController extends Controller
 
     public function getPerfilUser($id){
         $usuario = User::getUserById($id);
-        $coches_alquilados = User::getAllUserRent($id);
-        echo $coches_alquilados;
+        $coches_alquilados = User::getAllUserRent($id); // Tengo el id de todos los coches alquilados y su fecha de alquiler
+        $datos_concretos_coches = array();
+        $i = 0;
+        foreach($coches_alquilados as $coche_alquilado){
+            $coche = Car::getCarById($coche_alquilado->car_id);
+            $datos_concretos_coches[$i++] = $coche;
+        }
         return view('perfilUsuario')->with('usuario', $usuario)
-                                    ->with('coches', $coches_alquilados);
+                                    ->with('coches', $coches_alquilados)
+                                    ->with('datos_coche', $datos_concretos_coches);
     }
 
     public function getUpdateUser($id){

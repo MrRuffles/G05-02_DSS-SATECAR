@@ -47,16 +47,20 @@
                 <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID del Coche</th>
+                        <th>Matrícula</th>
                         <th>Fecha de alquiler</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($coches as $coche)
-                    <tr>
-                        <td scope="row">{{$coche->car_id}}</td>
-                        <td>{{$coche->date}}</td>
-                    </tr>
+                      @foreach($datos_coche as $dato_coche)
+                      @if($dato_coche->id === $coche->car_id)
+                        <tr>
+                          <td scope="row">{{$dato_coche->enrollment}}</td>
+                          <td>{{$coche->date}}</td>
+                        </tr>
+                      @endif
+                      @endforeach
                     @endforeach
                 </tbody>
                 </table>

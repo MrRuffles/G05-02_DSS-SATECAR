@@ -1,22 +1,14 @@
 @extends('barradenavegacion')
 @section('content')
-
-<style>
-    .rectangulo {
-        width: 250px;
-        height: 100px;
-        border: 3px solid #555;
-        background: #428bca;
-    }
-</style>
-
 <h3>Perfil de {{ $usuario->name }} {{ $usuario->surnames }} </h3>
 <div  style="padding: 10px; border-style: dashed; border-width: 1px; margin-bottom: 11px">
     <div class="row" style="justify-content: space-between; margin:0px">
         <label>DNI: {{ $usuario->dni }}</label>
         <div>
-        <a href="/usuario/{{ $usuario->id }}/editar" type="button" class="btn btn-primary">Editar Perfil</a>
-        <button href="#" type="button" class="btn btn-danger">Eliminar Perfil</button>
+            <a href="/usuario/{{ $usuario->id }}/editar" type="button" class="btn btn-primary">Editar Perfil</a>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                Eliminar Perfil
+            </button>
         </div>
     </div>
     <p>Telefono: {{ $usuario->phone }}</p>
@@ -24,5 +16,26 @@
     <p>Correo Electronico: {{ $usuario->email }}</p>
     <h3>Tipo de Usuario: {{ $usuario->typeUser }}</h3>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Borrar Perfil</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        *Esta acción es irreversible, no se podran recuperar los datos borrados
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger">Aceptar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <h3>Coches Alquilados</h3>
 @endsection

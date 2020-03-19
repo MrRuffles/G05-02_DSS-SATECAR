@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Http\Request;
+use DB;
 
 class User extends Authenticatable
 {
@@ -22,7 +24,9 @@ class User extends Authenticatable
     protected $fillable = [
         'dni','name', 'surnames' , 'adress', 'phone' ,'typeUser' , 'email'
     ];
-    
+
+    public $timestamps = false;
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -40,4 +44,31 @@ class User extends Authenticatable
    /* protected $casts = [
         'email_verified_at' => 'datetime',
     ];*/
+
+    public static function getAllUsersByName(){
+        // En este caso puedo uso get para obtener los objetos por que quiero obtener una lista, get devuelve una colección
+        $usuarios = User::orderBy('name', 'ASC')->get();
+        return $usuarios;
+    }
+
+    public static function getUserById($id){
+        // En este caso uso first por que quiero solo el primer elemento que encuentra en ese campo, first devuelve un unico objeto
+        $usuario = User::where('id', '=', $id)->first();
+        return $usuario;
+    }
+
+    // ESTA FUNCION ME DEVOLVERA TODO LOS COCHES QUE TIENE ALQUILADOS EL USUARIO
+    public static function getAllUserRent($idUsuario){
+        /*
+            select car_id, date from rents where user_id = $idUsuario
+        */
+        $coches_alquilados = DB::table('rents')->select('car_id', 'date')->where('user_id', '=', $idUsuario)->get();
+        return $coches_alquilados;
+    }
+
+    public static function updateUser(Request $request, $usuario){
+        $usuario->update($request->all());
+    }
+
+
 }

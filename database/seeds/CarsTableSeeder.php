@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Brand;
+use App\Concessionaire;
 use Illuminate\Database\Eloquent\Collection;
 class CarsTableSeeder extends Seeder
 {
@@ -22,7 +23,9 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => '4x4',
             'color' => 'blue',
             'fuelConsumption' => '5.6',
-            'brand_id' => Brand::where('name', 'Abarth')->first()->id]);
+            'brand_id' => Brand::where('name', 'Abarth')->first()->id,
+            'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
+        );
         
         DB::table('cars')->insert([
             'enrollment' => '1543 KMS' ,
@@ -31,7 +34,9 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => 'ranchera',
             'color' => 'black',
             'fuelConsumption' => '7.2',
-            'brand_id' => Brand::where('name', 'Dacia')->first()->id]);
+            'brand_id' => Brand::where('name', 'Dacia')->first()->id,
+            'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
+        );
         
             DB::table('cars')->insert([
                 'enrollment' => '3000 KLK' ,
@@ -40,7 +45,9 @@ class CarsTableSeeder extends Seeder
                 'tradeMark' => 'sport',
                 'color' => 'white',
                 'fuelConsumption' => '9.1',
-                'brand_id' => Brand::where('name', 'Bentley')->first()->id]);
+                'brand_id' => Brand::where('name', 'Bentley')->first()->id,
+                'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
+            );
         
             DB::table('cars')->insert([
                 'enrollment' => '3000 BBC' ,
@@ -49,7 +56,9 @@ class CarsTableSeeder extends Seeder
                 'tradeMark' => '4x4',
                 'color' => 'red',
                 'fuelConsumption' => '12',
-                'brand_id' => Brand::where('name', 'Bugatti')->first()->id]);
+                'brand_id' => Brand::where('name', 'Bugatti')->first()->id,
+                'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
+            );
             
             DB::table('cars')->insert([
                 'enrollment' => '6699 GYM' ,
@@ -58,7 +67,9 @@ class CarsTableSeeder extends Seeder
                 'tradeMark' => 'sport',
                 'color' => 'white',
                 'fuelConsumption' => '9.1',
-                'brand_id' => Brand::where('name', 'Aston Martin')->first()->id]);
+                'brand_id' => Brand::where('name', 'Aston Martin')->first()->id,
+                'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
+            );
         }
 
 }

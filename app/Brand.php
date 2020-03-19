@@ -11,4 +11,8 @@ class Brand extends Model
     }
     protected $fillable = [
         'name','yearofdeparture', 'country' , 'range'];
+
+    public static function getBrandByID($id){
+        return Brand::where('id','=', $id)->first();
+    }
 }

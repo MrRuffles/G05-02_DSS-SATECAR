@@ -16,10 +16,17 @@ Route::get('/', function () {
     return view('paginaprincipal');
 });
 
-Route::get('cars', function(){
-    return view('cars'/*, ['cars' => Car::all()]*/)->with('cars', Car::all()) ;
-});
+//Rutas obtener coches
+Route::get('/coches', 'CarController@getAllCar');
+Route::get('/coches/{id}', 'CarController@getCar');
 
-Route::get('cars/{id}', function($id){
-    return view('car'/*, ['cars' => Car::all()]*/)->with('car', Car::find($id)) ;
-});
+//Rutas añadir coche
+Route::get('/añadir' , 'CarController@addCar');
+Route::post('/añadir' , 'CarController@saveCar');
+
+//Rutas editar Coche
+Route::get('/coches/{id}/editar' ,'CarController@getUpdate');
+Route::post('/coches/{id}/editar' ,'CarController@updateCar');
+
+//Ruta eliminar Coche
+Route::post('/coches/{id}/eliminar' ,'CarController@deleteCar');

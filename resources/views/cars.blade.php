@@ -1,37 +1,31 @@
-@include('barradenavegacion')
-<!doctype html>
+@extends('barradenavegacion')
+@section('content')
 
-<html>
-<h1> Cars </h1>
+<h1 class="text-center"> Coches </h1>
+<!-- ESTE BOTON REDIRIGIRA A LA PÁGINA DE CREACIÓN DE USUARIOS -->
+<a href="/añadir" type="button" class="btn btn-success btn-lg btn-block">Añadir Coche</a> 
 <table class="table table-striped table-dark">
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Enrollment</th>
-      <th scope="col">Years</th>
-      <th scope="col">Km</th>
-      <th scope="col">TradeMark</th>
-      <th scope="col">Color</th>
-      <th scope="col">FuelConsumtion</th>
-      <th scope="col">Brand</th>
+      <th scope="col">Mátricula</th>
+      <th scope="col">Marca</th>
     </tr>
   </thead>
   <tbody> 
 @foreach ($cars as $car)
-    
     <tr>
-        <th scope="row">Car {{$car->id}}</th> 
+        <th scope="row">Coche {{$car->id}}</th> 
         <td>{{$car->enrollment}}</td>
-        <td>{{$car->years}}</td>
-        <td>{{$car->km}}</td>
-        <td>{{$car->tradeMark}}</td>
-        <td>{{$car->color}}</td>
-        <td>{{$car->fuelConsumption}}</td>
-        <td>{{$car->brand_id}}</td>
+        @foreach ($brands as $brand)
+          @if($car->brand_id === $brand->id)
+            <td>{{$brand->name}}</td>
+            @break
+          @endif
+        @endforeach
+        <td><a href="/coches/{{$car->id}}" type="button" class="btn btn-info btn-sm">Ver perfil</a> </td>
     </tr>
-    
-   
 @endforeach
 </tbody>
 </table>
-</html>
+@endsection

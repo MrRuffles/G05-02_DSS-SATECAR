@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+    <title>SATECAR</title>
     <head>
 <!-- LINKS NECESARIOS PARA EL FUNCIONAMIENTO DEL NAVBAR -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,7 +12,7 @@
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  </head>
+    </head>
 
     <body id="container">
     <header>
@@ -20,16 +21,20 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+        <a class="nav-item nav-link active" href="/usuarios">Administrar Usuarios<span class="sr-only"></span></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             </ul>
-            <a class="nav-item nav-link active" href="#">Crear Usuario<span class="sr-only"></span></a>
+            
         </div>
+        <a class="nav-item nav-link active" href="/coches">Administrar coches<span class="sr-only"></span></a>
     </nav>
+       
     </header>
+    
     <div  class="container">
-    @yield('content')
+        @yield('content')
     </div>
+    
     </body>
 </html>

@@ -7,7 +7,7 @@ use App\Brand;
 class BrandsController extends Controller
 {
     public function view(){
-        $brands = Brand::orderBy('range')->paginate(10);
+        $brands = Brand::orderBy('range')->paginate(7);
         return view('brands', ['brands' => $brands]);
     }
 }

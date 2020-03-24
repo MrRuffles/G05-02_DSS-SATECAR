@@ -12,6 +12,7 @@
 |
 */
 use App\Car;
+
 Route::get('/', function () {
     return view('paginaprincipal');
 });
@@ -41,4 +42,7 @@ Route::get('/usuario/{id}/editar', 'UsersController@getUpdateUser'); // Devuelve
 Route::post('/usuario/{id}/editar', 'UsersController@update'); // Realiza la acción de editar los datos
 Route::post('/usuario/{id}/borrar', 'UsersController@delete'); // Realiza la acción de borrar los datos
 /////////////////////////////////////////////////////////////////////
+
+Route::get('incidents', 'IncidentsController@view'); //Lista Incidentes (paginadas)
+Route::get('brands', 'BrandsController@view'); //Lista Marcas (paginadas)
 

@@ -9,7 +9,7 @@ class CarController extends Controller {
     
     public function getAllCar(){
         $brands = array();
-        $cars = Car::all();
+        $cars = Car::paginate(7);
         $i = 0;
         foreach($cars as $car){
             $brands[$i++] = Brand::getBrandByID($car->brand_id);

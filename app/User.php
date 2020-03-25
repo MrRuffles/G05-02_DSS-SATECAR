@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public static function getAllUsersByName(){
         // En este caso puedo uso get para obtener los objetos por que quiero obtener una lista, get devuelve una colección
-        $usuarios = User::orderBy('name', 'ASC')->get();
+        $usuarios = User::orderBy('name', 'ASC')->paginate(7);
         return $usuarios;
     }
 

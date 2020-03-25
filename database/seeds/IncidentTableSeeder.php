@@ -27,13 +27,13 @@ class IncidentTableSeeder extends Seeder
         ]);
         DB::table('incidents')->insert([
             'type' => 'Siniestro total',
-            'description' => 'El vehiculo alquilado ha sufrido un accidente y está inutilizable',
+            'description' => 'El vehiculo alquilado ha sufrido un accidente y está inutilizable.',
             'price' => '15000',
             'grade' => 'Muy grave'
         ]);
         DB::table('incidents')->insert([
             'type' => 'Rotura de luna delantera',
-            'description' => 'El vehiculo alquilado ha sufrido un impacto en la luna delantera',
+            'description' => 'El vehiculo alquilado ha sufrido un impacto en la luna delantera.',
             'price' => '750',
             'grade' => 'Leve'
         ]);
@@ -41,6 +41,30 @@ class IncidentTableSeeder extends Seeder
             'type' => 'Abolladura',
             'description' => 'El vehiculo alquilado ha sufrido una abolladura.',
             'price' => '500',
+            'grade' => 'Leve'
+        ]);
+        DB::table('incidents')->insert([
+            'type' => 'Pinchazo',
+            'description' => 'El vehiculo alquilado ha sufrido un pinchazo.',
+            'price' => '200',
+            'grade' => 'Leve'
+        ]);
+        DB::table('incidents')->insert([
+            'type' => 'Motor',
+            'description' => 'El vehiculo alquilado ha sufrido un rotura de Motor.',
+            'price' => '1000',
+            'grade' => 'Grave'
+        ]);
+        DB::table('incidents')->insert([
+            'type' => 'Embrague',
+            'description' => 'El vehiculo alquilado ha sufrido una rotura en el embrague.',
+            'price' => '500',
+            'grade' => 'Medio'
+        ]);
+        DB::table('incidents')->insert([
+            'type' => 'Sin Gasolina/Gasoil',
+            'description' => 'El vehiculo alquilado ha llegado al punto de recogida sin gasolina/gasoil.',
+            'price' => '100',
             'grade' => 'Leve'
         ]);
     }

@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 //Rutas obtener coches
-Route::get('/coches', 'CarController@getAllCar');
+Route::get('coches', 'CarController@getAllCar');
 Route::get('/coches/{id}', 'CarController@getCar');
 
 //Rutas añadir coche
@@ -34,7 +34,7 @@ Route::post('/coches/{id}/editar' ,'CarController@updateCar');
 Route::post('/coches/{id}/eliminar' ,'CarController@deleteCar');
 
 // RUTAS RELACIONADAS CON LOS USUARIOS
-Route::get('/usuarios', 'UsersController@getAllUsers'); // Devuelve la pagina de listado de usuarios
+Route::get('usuarios', 'UsersController@getAllUsers'); // Devuelve la pagina de listado de usuarios
 Route::get('/registro', 'UsersController@getRegistro'); // Devuelve la pagina que crea un nuevo usuario
 Route::post('/registro', 'UsersController@store'); // Realiza la accion de crear un usuario
 Route::get('/usuario/{id}', 'UsersController@getPerfilUser'); // Devuelve la vista del perfil del usuario
@@ -43,6 +43,6 @@ Route::post('/usuario/{id}/editar', 'UsersController@update'); // Realiza la acc
 Route::post('/usuario/{id}/borrar', 'UsersController@delete'); // Realiza la acción de borrar los datos
 /////////////////////////////////////////////////////////////////////
 
-Route::get('incidents', 'IncidentsController@view'); //Lista Incidentes (paginadas)
-Route::get('brands', 'BrandsController@view'); //Lista Marcas (paginadas)
+Route::get('incidentes', 'IncidentsController@view'); //Lista Incidentes (paginadas)
+Route::get('marcas', 'BrandsController@view'); //Lista Marcas (paginadas)
 

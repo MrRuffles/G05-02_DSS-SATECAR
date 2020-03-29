@@ -17,21 +17,20 @@ Route::get('/', function () {
     return view('paginaprincipal');
 });
 
+//////////RUTAS COCHES//////////
+////////////////////////////////
 //Rutas obtener coches
 Route::get('coches', 'CarController@getAllCar');
 Route::get('/coches/{id}', 'CarController@getCar');
-
 //Rutas añadir coche
 Route::get('/añadir' , 'CarController@addCar');
 Route::post('/añadir' , 'CarController@saveCar');
-
 //Rutas editar Coche
 Route::get('/coches/{id}/editar' ,'CarController@getUpdate');
 Route::post('/coches/{id}/editar' ,'CarController@updateCar');
-
-
 //Ruta eliminar Coche
 Route::post('/coches/{id}/eliminar' ,'CarController@deleteCar');
+////////////////////////////////////////////////////////////
 
 // RUTAS RELACIONADAS CON LOS USUARIOS
 Route::get('usuarios', 'UsersController@getAllUsers'); // Devuelve la pagina de listado de usuarios

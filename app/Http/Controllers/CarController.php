@@ -9,26 +9,26 @@ class CarController extends Controller {
     
     public function getAllCar(){
         $brands = array();
-        $cars = Car::paginate(7);
+        $cars = Car::orderby('enrollment')->paginate(7);
         $i = 0;
         foreach($cars as $car){
             $brands[$i++] = Brand::getBrandByID($car->brand_id);
         }
-        return view('cars')->with('cars', $cars)->with('brands', $brands);
+        return view('car/cars')->with('cars', $cars)->with('brands', $brands);
     } 
 
     public function addCar(){
-        return view('carForm');
+        return view('car/carForm');
     }
     public function getUpdate($id){
         $car = Car::find($id);
         $brand = Brand::getBrandByID($car->brand_id);
-        return view('updateCar')->with('car', $car)->with('brand', $brand);
+        return view('car/updateCar')->with('car', $car)->with('brand', $brand);
     }
     public function getCar($id){
         $car = Car::find($id);
         $brand = Brand::getBrandByID($car->brand_id);
-        return view('car')->with('car', $car)->with('brand', $brand);
+        return view('car/car')->with('car', $car)->with('brand', $brand);
     }
     public function deleteCar($id){
         $car = Car::find($id);

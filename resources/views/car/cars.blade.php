@@ -1,16 +1,17 @@
 @extends('barradenavegacion')
 @section('content')
-
-<h1 class="text-center"> Coches </h1>
+<div class="container">
+<h2 class="mt-4"> Coches Registrados</h2>
 <p>
 <a href="/añadir" type="button" class="btn btn-success btn-lg btn-block">Añadir Coche</a> 
 </p>
-<table class="table table-striped table-dark">
-  <thead>
+<table class="table table-condensed table-hover">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Mátricula</th>
       <th scope="col">Marca</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody> 
@@ -30,4 +31,5 @@
 </tbody>
 </table>
 {{ $cars->links() }}
+</div>
 @endsection

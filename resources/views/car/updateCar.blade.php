@@ -1,11 +1,12 @@
 @extends('barradenavegacion')
 @section('content')
+
 <form action="{{ action('CarController@updateCar', $car->id) }}" method="POST" role="form">
     {{ csrf_field() }}
 	<input name="_method" type="hidden">
 
 	<div class="form-group">
-		<h1 style="color: #689F38;"> &nbsp;Actualizar Coche</h1>
+	<h2>Actualizar Coche</h2>
 		<label for= "form-group1" class="col-sm-2 control-label">Matrícula:</label> 
 		<div class="col-sm-10">
 			<input type="text"  class="form-control" id ="matricula" name="enrollment" value="{{ $car->enrollment }}">
@@ -57,7 +58,7 @@
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header btn-info">
                             <h5 class="modal-title" id="exampleModalLongTitle">Actualizar Coche</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>

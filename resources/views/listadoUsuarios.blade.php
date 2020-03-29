@@ -9,6 +9,26 @@
             <a href="/registro" type="button" class="btn btn-primary btn-lg btn-block">Crear Usuario Nuevo</a> 
         </div>
     </p>
+    <p>
+        <div>
+        <p>
+            <h3>Buscador</h3>
+        </p>
+        <form action="{{ action('UsersController@find') }}" method="POST" role="form">
+            <input type="hidden" name="_method" value="POST">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Nombre</label>
+                    <input type="name" name="name" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Correo Electrónico</label>
+                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <button type="submmit" class="btn btn-success">Buscar</button>
+        </form>
+        </div>
+    </p>
 
     <div id="tablaDeUsuarios"> 
         <table class="table">

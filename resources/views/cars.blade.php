@@ -2,8 +2,9 @@
 @section('content')
 
 <h1 class="text-center"> Coches </h1>
-<!-- ESTE BOTON REDIRIGIRA A LA PÁGINA DE CREACIÓN DE USUARIOS -->
+<p>
 <a href="/añadir" type="button" class="btn btn-success btn-lg btn-block">Añadir Coche</a> 
+</p>
 <table class="table table-striped table-dark">
   <thead>
     <tr>

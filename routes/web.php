@@ -41,6 +41,7 @@ Route::get('/usuario/{id}', 'UsersController@getPerfilUser'); // Devuelve la vis
 Route::get('/usuario/{id}/editar', 'UsersController@getUpdateUser'); // Devuelve la vista de la pagina para editar los datos
 Route::post('/usuario/{id}/editar', 'UsersController@update'); // Realiza la acción de editar los datos
 Route::post('/usuario/{id}/borrar', 'UsersController@delete'); // Realiza la acción de borrar los datos
+Route::post('/usuarios', 'UsersController@find'); // Realiza la busqueda por 2 campos distintos
 /////////////////////////////////////////////////////////////////////
 
 Route::get('incidentes', 'IncidentsController@view'); //Lista Incidentes (paginadas)

@@ -17,17 +17,17 @@
     <body id="container">
     <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">SATECAR</a>
+        <a class="navbar-brand" href="/">SATECAR</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         <a class="nav-item nav-link active" href="/usuarios">Administrar Usuarios<span class="sr-only"></span></a>
+        <a class="nav-item nav-link active" href="/coches">Administrar coches<span class="sr-only"></span></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             </ul>
             
         </div>
-        <a class="nav-item nav-link active" href="/coches">Administrar coches<span class="sr-only"></span></a>
     </nav>
        
     </header>
@@ -36,5 +36,9 @@
         @yield('content')
     </div>
     
+    <footer class="container">
+        <p>&copy; 2019-2020 Company SATECAR, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
     </body>
 </html>

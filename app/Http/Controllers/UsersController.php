@@ -73,4 +73,11 @@ class UsersController extends Controller
         return view('listadoUsuarios')->with('usuarios', $usuarios);
     }
 
+    public function find(){
+        $nombre = $_POST['name'];
+        $email = $_POST['email'];
+        $usuarios = User::getUsersBy($nombre, $email);
+        return view('listadoUsuarios')->with('usuarios', $usuarios);
+    }
+
 }

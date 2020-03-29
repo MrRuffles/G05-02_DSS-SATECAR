@@ -70,5 +70,10 @@ class User extends Authenticatable
         $usuario->update($request->all());
     }
 
-
+    public static function getUsersBy($nombre, $email){
+        //$usuarios = DB::table('users')->select('*')->where('name', '=', $nombre, 'AND', 'email', '=', $email)->paginate(7);
+        $usuarios = DB::table('users')->where('name', '=', $nombre)->orWhere('email', '=', $email)->paginate(7);
+        return $usuarios;
+    }
+ 
 }

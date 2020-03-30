@@ -49,7 +49,7 @@ class UsersController extends Controller
         ]);
         User::create($request->all());
         $usuarios = User::getAllUsersByName();
-        return view('listadoUsuarios')->with('usuarios', $usuarios);
+        return redirect('/usuarios')->with('usuarios', $usuarios);
     }
 
     public function update(Request $request, $id){ 
@@ -64,13 +64,13 @@ class UsersController extends Controller
         ]);
         $usuario = User::getUserById($id);
         User::updateUser($request, $usuario);
-        return view('perfilUsuario')->with('usuario', $usuario);
+        return redirect()->action('UsersController@getPerfilUser', $id);
     }
     // AHORA MISMO NO SE PUEDEN BORRAR USUARIOS QUE TENGAN UN COCHE ALQUILADO, PRIMERO TENEMOS QUE ELIMINAR EL QUE ESTE ALQUILADO
     public function delete(Request $request, $id){
         $usuario = User::getUserById($id)->delete();
         $usuarios = User::getAllUsersByName();
-        return view('listadoUsuarios')->with('usuarios', $usuarios);
+        return redirect('/usuarios')->with('usuarios', $usuarios);
     }
 
     public function find(){

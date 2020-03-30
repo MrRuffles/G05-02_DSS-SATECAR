@@ -12,6 +12,7 @@
       <th scope="col">Color</th>
       <th scope="col">Consumo</th>
       <th scope="col">Marca</th>
+      <th scope="col">Concesionario</th>
     </tr>
   </thead>
   <tbody> 
@@ -24,7 +25,7 @@
         <td>{{$car->color}}</td>
         <td>{{$car->fuelConsumption}}</td>
         <td>{{$brand->name}}</td>
-        
+        <td>{{$conces->name}}</td>
         <!-- Button trigger modal -->
     </tr>
     
@@ -53,7 +54,7 @@
       <form action="{{ action('CarController@deleteCar', $car->id) }}" method="POST">
         {{ csrf_field() }}
         <input name="_method" type="hidden" value="POST">
-        <button type="submit" class="btn btn-primary btn-sm ">Aceptar</button>
+        <button a href="/coches" type="submit" class="btn btn-primary btn-sm ">Aceptar</button>
       </form>
         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
       </div>

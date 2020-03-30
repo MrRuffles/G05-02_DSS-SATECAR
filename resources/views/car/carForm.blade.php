@@ -48,6 +48,12 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="form-group8" class="col-sm-2 control-label">Concesionario: </label> 
+		<div class="col-sm-10">	
+			<input type="text" class="form-control" id="concesionario" name="conces" placeholder="Hijos de Manuel Crespo">
+		</div>
+	</div>
+	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<input type="submit" class="btn btn-primary btn-sm" value="Añadir" id="button_addCar">
 			<a href="/coches" type="button" class="btn btn-secondary btn-sm">Cancelar</a>

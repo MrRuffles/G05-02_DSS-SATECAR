@@ -29,7 +29,7 @@ Route::post('/añadir' , 'CarController@saveCar');
 Route::get('/coches/{id}/editar' ,'CarController@getUpdate');
 Route::post('/coches/{id}/editar' ,'CarController@updateCar');
 //Ruta eliminar Coche
-Route::post('/coches/{id}/eliminar' ,'CarController@deleteCar');
+Route::post('/coches/{id}' ,'CarController@deleteCar');
 ////////////////////////////////////////////////////////////
 
 // RUTAS RELACIONADAS CON LOS USUARIOS

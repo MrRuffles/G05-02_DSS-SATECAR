@@ -12,4 +12,8 @@ class Concessionaire extends Model
 
     protected $fillable = [
         'name', 'address', 'cif', 'phone', 'city', 'country', 'email'];
+
+    public static function getConcessionaireByID($id){
+        return Concessionaire::where('id','=', $id)->first();
+    }
 }

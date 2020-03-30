@@ -49,6 +49,12 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="form-group8" class="col-sm-2 control-label">Concesionario: </label> 
+		<div class="col-sm-10">	
+			<input type="text" class="form-control" id="concesionario" name="conces" value="{{ $conces->name }}">
+		</div>
+	</div>
+	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Car;
 use App\Brand;
+use App\Concessionaire;
 class CarController extends Controller {
     
     public function getAllCar(){
@@ -23,17 +24,19 @@ class CarController extends Controller {
     public function getUpdate($id){
         $car = Car::find($id);
         $brand = Brand::getBrandByID($car->brand_id);
-        return view('car/updateCar')->with('car', $car)->with('brand', $brand);
+        $conces = Concessionaire::getConcessionaireByID($car->concessionaire_id);
+        return view('car/updateCar')->with('car', $car)->with('brand', $brand)->with('conces', $conces);
     }
     public function getCar($id){
         $car = Car::find($id);
         $brand = Brand::getBrandByID($car->brand_id);
-        return view('car/car')->with('car', $car)->with('brand', $brand);
+        $conces = Concessionaire::getConcessionaireByID($car->concessionaire_id);
+        return view('car/car')->with('car', $car)->with('brand', $brand)->with('conces', $conces);
     }
     public function deleteCar($id){
         $car = Car::find($id);
         $car->delete();
-        return $this->getAllCar();
+        return redirect('/coches');
     }
 
     public function saveCar(Request $request){
@@ -46,9 +49,11 @@ class CarController extends Controller {
         $car->color =  $request->input('color');
         $car->fuelConsumption =  $request->input('fuelConsumption');
         $brand = Brand::where('name', $request->input('brand'))->first()->id;
+        $conces = Concessionaire::where('name', $request->input('conces'))->first()->id;
         $car->brand()->associate($brand);
+        $car->concessionaire()->associate($conces);
         $car->save();
-        return $this->getAllCar();
+        return redirect('/coches');
     }
 
     public function updateCar(Request $request, $id){
@@ -60,9 +65,11 @@ class CarController extends Controller {
         $car->color =  $request->input('color');
         $car->fuelConsumption =  $request->input('fuelConsumption');
         $brand = Brand::where('name', $request->input('brand'))->first()->id;
+        $conces = Concessionaire::where('name', $request->input('conces'))->first()->id;
         $car->brand()->associate($brand);
+        $car->concessionaire()->associate($conces);
         $car->save();
-        return $this->getCar($id);
+        return redirect("/coches/{$id}");
 
     }
 }

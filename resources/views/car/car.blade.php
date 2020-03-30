@@ -61,4 +61,32 @@
     </div>
   </div>
 </div>
+
+@if($accidentes != '[]')
+   <p> <h3>Accidentes sufridos</h3></p>
+        <div>
+            <div id="tablaDeAccidentes"> 
+                <table class="table table-condensed text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Fecha de accidente</th>
+                        <th>Coste</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($accidentes as $accidente)
+                      @foreach($datos_accidente as $dato_accidente)
+                        <tr>
+                          <td scope="row">{{$dato_accidente->type}}</td>
+                          <td>{{$accidente->date}}</td>
+                          <td>{{$dato_accidente->price}}</td>
+                        </tr>
+                      @endforeach
+                    @endforeach
+                </tbody>
+                </table>
+        </div>
+</div>
+@endif
 @endsection

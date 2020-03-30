@@ -1,11 +1,13 @@
+
 @extends('barradenavegacion')
 @section('content')
+
 <div class="container">
 <h2 class="mt-4"> Coches Registrados</h2>
 <p>
 <a href="/añadir" type="button" class="btn btn-success btn-lg btn-block">Añadir Coche</a> 
 </p>
-<table class="table table-condensed table-hover">
+<table class="table table-hover text-center">
   <thead class="thead-dark">
     <tr>
       <th scope="col">ID</th>

@@ -1,12 +1,12 @@
 @extends('barradenavegacion')
 @section('content')
-
+<p><h2>Actualizar Coche</h2></p>
 <form action="{{ action('CarController@updateCar', $car->id) }}" method="POST" role="form">
     {{ csrf_field() }}
 	<input name="_method" type="hidden">
 
 	<div class="form-group">
-	<h2>Actualizar Coche</h2>
+	
 		<label for= "form-group1" class="col-sm-2 control-label">Matrícula:</label> 
 		<div class="col-sm-10">
 			<input type="text"  class="form-control" id ="matricula" name="enrollment" value="{{ $car->enrollment }}">

@@ -23,6 +23,8 @@
             </button>
         <a class="nav-item nav-link active" href="/usuarios">Administrar Usuarios<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/coches">Administrar Coches<span class="sr-only"></span></a>
+        <a class="nav-item nav-link active" href="/marcas">Listado de marcas<span class="sr-only"></span></a>
+        <a class="nav-item nav-link active" href="/incidentes">Listado de incidentes<span class="sr-only"></span></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             </ul>

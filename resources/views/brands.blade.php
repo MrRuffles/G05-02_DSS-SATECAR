@@ -1,7 +1,7 @@
-@include('barradenavegacion')
-<!doctype html>
-<html>
-<h1> Brands </h1>
+@extends('barradenavegacion')
+@section('content')
+
+<h1> Marcas </h1>
 <div>
   <table class="table table-striped table-dark">
     <thead>
@@ -30,4 +30,4 @@
   </table>
   {{ $brands->links() }}
 </div>
-</html>
+@endsection

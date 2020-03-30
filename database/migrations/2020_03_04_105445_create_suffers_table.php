@@ -16,7 +16,7 @@ class CreateSuffersTable extends Migration
         Schema::create('suffers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('car_id')->unsigned();
-            $table->foreign('car_id')->references('id')->on('cars');
+            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('incident_id')->unsigned();
             $table->foreign('incident_id')->references('id')->on('incidents');
             $table->date('date')->nullable();

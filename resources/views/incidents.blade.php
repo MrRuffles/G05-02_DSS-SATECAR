@@ -1,7 +1,6 @@
-@include('barradenavegacion')
-<!doctype html>
-<html>
-<h1> Incidents </h1>
+@extends('barradenavegacion')
+@section('content')
+<h1> Incidentes </h1>
 <div>
   <table class="table table-striped table-dark">
     <thead>
@@ -30,4 +29,4 @@
   </table>
   {{ $incidents->links() }}
 </div>
-</html>
+@endsection

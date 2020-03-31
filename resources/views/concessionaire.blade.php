@@ -4,7 +4,6 @@
 <table class="table table-striped table-dark">
   <thead>
     <tr>
-    <th scope="col">ID</th>
       <th scope="col">Nombre</th>
       <th scope="col">Direccion</th>
       <th scope="col">CIF</th>
@@ -16,9 +15,8 @@
   </thead>
   <tbody> 
     <tr>
-        <th scope="row">Concesionario {{$concesionario->id}}</th> 
-        <td>{{$concesionario->name}}</td>
-        <td>{{$concesionario>address}}</td>
+        <th scope="row">{{$concesionario->name}}</th>
+        <td>{{$concesionario->address}}</td>
         <td>{{$concesionario->cif}}</td>
         <td>{{$concesionario->phone}}</td>
         <td>{{$concesionario->city}}</td>

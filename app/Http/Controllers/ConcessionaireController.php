@@ -9,7 +9,7 @@ use App\Car;
 class ConcessionaireController extends Controller{
 
     public function getAllConcessionaire(){
-        $concesionarios = Concessionaire::All();
+        $concesionarios = Concessionaire::orderBy('city')->paginate(7);
         return view('listadoConcesionarios')->with('concesionarios',$concesionarios);
     }
     public function getConcessionaire($id){
@@ -25,8 +25,8 @@ class ConcessionaireController extends Controller{
     }
     public function deleteConcessionaire($id){
         $conceD = Concessionaire::find($id);
-        $conceD->delete();
-        return $this->getAllConcessionaire();
+        $conceA = Concessionaire::orderBy('city')->paginate(7);
+        return redirect('/concesionario')->with('concesionarios', $conceA);
     }
     public function storeConcessionaire(Request $request){
         $this->validate($request, [
@@ -39,8 +39,8 @@ class ConcessionaireController extends Controller{
             'email' => 'required'
         ]);
         Concessionaire::create($request->all());
-        $conceA = Concessionaire::all();
-        return view('listadoConcesionarios')->with('concesionarios', $conceA);
+        $conceA = Concessionaire::orderBy('city')->paginate(7);
+        return redirect('/concesionario')->with('concesionarios', $conceA);
     }
     public function updateConcessionaire(Request $request, $id){ 
         $this->validate($request, [

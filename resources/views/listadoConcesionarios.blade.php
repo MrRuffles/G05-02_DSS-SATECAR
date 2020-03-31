@@ -41,6 +41,7 @@
             @endforeach
         </tbody>
         </table>
+        {{ $concesionarios->links() }}
     </div>
     </div>
 @endsection

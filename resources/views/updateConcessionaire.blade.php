@@ -44,7 +44,7 @@
 	<div class="form-group">
 		<label for="form-group7" class="col-sm-2 control-label">Email: </label> 
 		<div class="col-sm-10">	
-			<input type="text" class="form-control" id="mail" name="emal" value="{{ $concesionario->email }}">
+			<input type="text" class="form-control" id="mail" name="email" value="{{ $concesionario->email }}">
 		</div>
 	</div>
 	<div class="form-group">

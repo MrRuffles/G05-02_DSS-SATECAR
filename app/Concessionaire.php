@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Http\Request;
 class Concessionaire extends Model
 {
     public function cars(){
@@ -18,6 +18,6 @@ class Concessionaire extends Model
         return Concessionaire::where('id','=', $id)->first();
     }
     public static function updateConcessionaire(Request $request, $conceU){
-        $usuario->update($request->all());
+        $conceU->update($request->all());
     }
 }

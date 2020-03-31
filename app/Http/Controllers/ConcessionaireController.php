@@ -39,7 +39,6 @@ class ConcessionaireController extends Controller{
             'email' => 'required'
         ]);
         Concessionaire::create($request->all());
-        echo "HOLA";
         $conceA = Concessionaire::all();
         return view('listadoConcesionarios')->with('concesionarios', $conceA);
     }
@@ -53,8 +52,8 @@ class ConcessionaireController extends Controller{
             'country' => 'required',
             'email' => 'required'
         ]);
-        $conceU = Concessionaire::getConcessionaire($id);
+        $conceU = Concessionaire::getConcessionaireByID($id);
         Concessionaire::updateConcessionaire($request, $conceU);
-        return view('concessionaire')->with('concesionarios', $conceU);
+        return view('concessionaire')->with('concesionario', $conceU);
     }
 }

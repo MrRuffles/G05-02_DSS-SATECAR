@@ -1,6 +1,8 @@
 @extends('barradenavegacion')
 @section('content')
-<a href="/concesionario" type="button" class="btn btn-primary btn-lg btn-block">Concesionario</a> 
+<p>
+<div><a href="/concesionario" type="button" class="btn btn-primary btn-lg btn-block">Concesionario</a> </div>
+</p>
 <table class="table table-striped table-dark">
   <thead>
     <tr>

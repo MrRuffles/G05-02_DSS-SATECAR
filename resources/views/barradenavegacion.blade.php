@@ -22,6 +22,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         <a class="nav-item nav-link active" href="/usuarios">Administrar Usuarios<span class="sr-only"></span></a>
+        <a class="nav-item nav-link active" href="/concesionario">Administrar Concesionarios<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/coches">Administrar Coches<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/marcas">Listado Marcas<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/incidentes">Listado Incidentes<span class="sr-only"></span></a>

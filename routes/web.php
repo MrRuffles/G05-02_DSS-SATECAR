@@ -46,6 +46,7 @@ Route::post('/usuarios', 'UsersController@find'); // Realiza la busqueda por 2 c
 Route::get('incidentes', 'IncidentsController@view'); //Lista Incidentes (paginadas)
 Route::get('marcas', 'BrandsController@view'); //Lista Marcas (paginadas)
 
+
 //Rutas obtener concesionario
 Route::get('/concesionario', 'ConcessionaireController@getAllConcessionaire');
 Route::get('/concesionario/{id}', 'ConcessionaireController@getConcessionaire');

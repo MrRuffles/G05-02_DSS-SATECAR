@@ -46,3 +46,11 @@ Route::post('/usuarios', 'UsersController@find'); // Realiza la busqueda por 2 c
 Route::get('incidentes', 'IncidentsController@view'); //Lista Incidentes (paginadas)
 Route::get('marcas', 'BrandsController@view'); //Lista Marcas (paginadas)
 
+//Rutas obtener concesionario
+Route::get('/concesionario', 'ConcessionaireController@getAllConcessionaire');
+Route::get('/concesionario/{id}', 'ConcessionaireController@getConcessionaire');
+Route::get('/concesionario/registro', 'ConcessionaireController@addConcessionaire');
+Route::post('/concesionario/registro' , 'ConcessionaireController@storeConcessionaire');
+Route::get('/concesionario/{id}/editar' ,'ConcessionaireController@getUpdate');
+Route::post('/concesionario/{id}/editar' ,'ConcessionaireController@updateConcessionaire');
+Route::post('/concesionario/{id}/borrar' ,'ConcessionaireController@deleteConcessionaire');

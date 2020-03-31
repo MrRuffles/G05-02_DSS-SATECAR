@@ -1,6 +1,6 @@
 @extends('barradenavegacion')
 @section('content')
-<form action="{{ action('ConcessionaireController@saveConcessionaire') }}" method="POST" role="form">
+<form action="{{ action('ConcessionaireController@storeConcessionaire') }}" method="POST" role="form">
     {{ csrf_field() }}
 	<input name="_method" type="hidden">
 
@@ -32,7 +32,7 @@
 	<div class="form-group">
 		<label for="form-group5" class="col-sm-2 control-label">Ciudad: </label> 
 		<div class="col-sm-10">	
-			<input type="text"  class="form-control" id="ciudad" name="citi"placeholder="Elda">
+			<input type="text"  class="form-control" id="ciudad" name="city"placeholder="Elda">
 		</div>
 	</div>
 	<div class="form-group">
@@ -47,10 +47,8 @@
 			<input type="text" class="form-control" id="mail" name="email"placeholder="info@autosbanon.es">
 		</div>
 	</div>
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<input type="submit" class="btn btn-primary btn-sm" value="Añadir" id="button_addConcessionaire">
-		</div>
+	<div class="col-sm-offset-2 col-sm-10">
+		<button type="submit" class="btn btn-primary btn-sm" >Añadir</button>
 	</div>
 </form>
 @endsection

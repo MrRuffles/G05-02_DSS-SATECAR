@@ -6,7 +6,7 @@
     <p>
         <div id="botonCrearConcesionario">
             <!-- ESTE BOTON REDIRIGIRA A LA PÁGINA DE CREACIÓN DE CONCESIONARIOS -->
-            <a href="/concesionario/registro" type="button" class="btn btn-primary btn-lg btn-block">Crear Concesionario Nuevo</a> 
+            <a href="/crearConcesionario" type="button" class="btn btn-primary btn-lg btn-block">Crear Concesionario Nuevo</a> 
         </div>
     </p>
 

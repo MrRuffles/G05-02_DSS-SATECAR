@@ -17,7 +17,7 @@ class ConcessionaireController extends Controller{
         return view('concessionaire')->with('concesionario', $conce);
     }
     public function addConcessionaire(){
-        return view('concessionnaireForm');
+        return view('concessionaireForm');
     }
     public function getUpdateConcessionaire($id){
         $conceU = Concessionaire::find($id);
@@ -31,7 +31,7 @@ class ConcessionaireController extends Controller{
     public function storeConcessionaire(Request $request){
         $this->validate($request, [
             'name' => 'required',
-            'adress' => 'required',
+            'address' => 'required',
             'cif' => 'required',
             'phone' => 'required',
             'city' => 'required',
@@ -39,13 +39,14 @@ class ConcessionaireController extends Controller{
             'email' => 'required'
         ]);
         Concessionaire::create($request->all());
-        $conceA = Concessionaire::getAllConcessionaire();
+        echo "HOLA";
+        $conceA = Concessionaire::all();
         return view('listadoConcesionarios')->with('concesionarios', $conceA);
     }
     public function updateConcessionaire(Request $request, $id){ 
         $this->validate($request, [
             'name' => 'required',
-            'adress' => 'required',
+            'address' => 'required',
             'cif' => 'required',
             'phone' => 'required',
             'city' => 'required',

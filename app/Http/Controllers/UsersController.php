@@ -54,11 +54,11 @@ class UsersController extends Controller
 
     public function update(Request $request, $id){ 
         $this->validate($request, [
-            'dni' => 'required|max:9|unique:users',
+            'dni' => 'required|max:9',
             'name' => 'required|max:255',
             'surnames' => 'required|max:255',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required|max:9|unique:users',
+            'email' => 'required|email',
+            'phone' => 'required|max:9',
             'adress' => 'required|max:255',
             'typeUser' => 'required'
         ]);

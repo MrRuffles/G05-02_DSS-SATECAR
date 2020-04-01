@@ -77,16 +77,19 @@
                 <tbody>
                     @foreach($accidentes as $accidente)
                       @foreach($datos_accidente as $dato_accidente)
+                      @if($dato_accidente->id === $accidente->incident_id)
                         <tr>
                           <td scope="row">{{$dato_accidente->type}}</td>
                           <td>{{$accidente->date}}</td>
                           <td>{{$dato_accidente->price}}</td>
                         </tr>
+                      @endif
                       @endforeach
                     @endforeach
                 </tbody>
                 </table>
         </div>
+        {{ $accidentes->links() }}
 </div>
 @endif
 @endsection

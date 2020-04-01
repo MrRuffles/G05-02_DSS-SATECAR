@@ -66,7 +66,7 @@
    <p> <h3>Accidentes sufridos</h3></p>
         <div>
             <div id="tablaDeAccidentes"> 
-                <table class="table table-condensed text-center">
+                <table class="table table-hover table-condensed text-center">
                 <thead class="thead-dark">
                     <tr>
                         <th>Tipo</th>

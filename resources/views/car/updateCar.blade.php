@@ -6,50 +6,113 @@
 	<input name="_method" type="hidden">
 
 	<div class="form-group">
-	
 		<label for= "form-group1" class="col-sm-2 control-label">Matrícula:</label> 
+		{{-- Error messages --}}
+		@if ($errors->has('enrollment'))
+			<ul>
+			@foreach ($errors->get('enrollment') as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		@endif
 		<div class="col-sm-10">
 			<input type="text"  class="form-control" id ="matricula" name="enrollment" value="{{ $car->enrollment }}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-group2" class="col-sm-2 control-label">Años: </label> 
+		{{-- Error messages --}}
+		@if ($errors->has('years'))
+			<ul>
+			@foreach ($errors->get('years') as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		@endif
 		<div class="col-sm-10">	
 			<input type="text" class="form-control" id="años" name="years" value="{{ $car->years }}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-group3" class="col-sm-2 control-label">kilómetros: </label> 
+		{{-- Error messages --}}
+		@if ($errors->has('km'))
+			<ul>
+			@foreach ($errors->get('km') as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		@endif
 		<div class="col-sm-10">	
 			<input type="text" class="form-control" id="IDkm" name="km" value="{{ $car->km }}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-group4" class="col-sm-2 control-label">Modelo: </label> 
+		{{-- Error messages --}}
+		@if ($errors->has('tradeMark'))
+			<ul>
+			@foreach ($errors->get('tradeMark') as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		@endif
 		<div class="col-sm-10">	
 			<input type="text"  class="form-control" id="modelo" name= "tradeMark" value="{{ $car->tradeMark }}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-group5" class="col-sm-2 control-label">Color: </label> 
+		{{-- Error messages --}}
+		@if ($errors->has('color'))
+			<ul>
+			@foreach ($errors->get('color') as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		@endif
 		<div class="col-sm-10">	
 			<input type="text"  class="form-control" id="idcolor" name="color" value="{{ $car->color }}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-group6" class="col-sm-2 control-label">Consumo: </label> 
+		{{-- Error messages --}}
+		@if ($errors->has('fuelConsumption'))
+			<ul>
+			@foreach ($errors->get('fuelConsumption') as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		@endif
 		<div class="col-sm-10">	
 			<input type="text" class="form-control" id="consumo" name="fuelConsumption" value="{{ $car->fuelConsumption }}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-group7" class="col-sm-2 control-label">Marca: </label> 
+		{{-- Error messages --}}
+		@if ($errors->has('brand'))
+			<ul>
+			@foreach ($errors->get('brand') as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		@endif
 		<div class="col-sm-10">	
 			<input type="text" class="form-control" id="marca" name="brand" value="{{ $brand->name }}">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="form-group8" class="col-sm-2 control-label">Concesionario: </label> 
+		{{-- Error messages --}}
+		@if ($errors->has('conces'))
+			<ul>
+			@foreach ($errors->get('conces') as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		@endif
 		<div class="col-sm-10">	
 			<input type="text" class="form-control" id="concesionario" name="conces" value="{{ $conces->name }}">
 		</div>

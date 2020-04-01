@@ -36,7 +36,7 @@ class CarController extends Controller {
         $datos_concretos_accidentes = array();
         $i = 0;
         foreach($accidentes_sufridos as $accidente_sufrido){
-            $accidente = Incident::getAccidentbyCarID($car->id);
+            $accidente = Incident::getAccidentbyCarID($accidente_sufrido->incident_id);
             $datos_concretos_accidentes[$i++] = $accidente;
         }
         $conces = Concessionaire::getConcessionaireByID($car->concessionaire_id);

@@ -16,6 +16,11 @@ class SufferSeederTable extends Seeder
     {
         DB::table('suffers')->delete();
         DB::table('suffers')->insert([
+            'car_id' => Car::where('enrollment', '3000 BBC')->first()->id,
+            'incident_id' => Incident::where('price', '100')->first()->id,
+            'date' => Carbon::parse('2019-04-01 12:00:00')
+        ]);
+        DB::table('suffers')->insert([
             'car_id' => Car::where('enrollment', '2543 SXX')->first()->id,
             'incident_id' => Incident::where('price', '500')->first()->id,
             'date' => Carbon::parse('2019-02-01 12:00:00')
@@ -36,9 +41,19 @@ class SufferSeederTable extends Seeder
              'date' => Carbon::parse('2019-02-01 12:00:00')
         ]);
         DB::table('suffers')->insert([
+            'car_id' => Car::where('enrollment', '3000 BBC')->first()->id,
+            'incident_id' => Incident::where('price', '200')->first()->id,
+            'date' => Carbon::parse('2019-12-26 12:00:00')
+        ]);
+        DB::table('suffers')->insert([
             'car_id' => Car::where('enrollment', '6699 GYM')->first()->id,
             'incident_id' => Incident::where('price', '5000')->first()->id,
              'date' => Carbon::parse('2019-02-01 12:00:00')
+        ]);
+        DB::table('suffers')->insert([
+            'car_id' => Car::where('enrollment', '3000 BBC')->first()->id,
+            'incident_id' => Incident::where('price', '5000')->first()->id,
+            'date' => Carbon::parse('2020-01-01 12:00:00')
         ]);
     }
 }

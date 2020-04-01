@@ -24,7 +24,7 @@ class Car extends Model
 
     //Esta funcion devuelve los accidentes de un coche
     public static function getAllIncidentsByCar($idCoche){
-        $accidentes_sufridos = DB::table('suffers')->select('incident_id', 'date')->where('car_id', '=', $idCoche)->get();
+        $accidentes_sufridos = DB::table('suffers')->select('incident_id', 'date')->where('car_id', '=', $idCoche)->paginate(3);
         return $accidentes_sufridos;
     }
     // ESTA FUNCION LA HE HECHO YO NO LA BORREIS AL ARREGLAR CONFLICTOS PLEASEEEE

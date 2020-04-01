@@ -62,7 +62,7 @@ class User extends Authenticatable
         /*
             select car_id, date from rents where user_id = $idUsuario
         */
-        $coches_alquilados = DB::table('rents')->select('car_id', 'date')->where('user_id', '=', $idUsuario)->get();
+        $coches_alquilados = DB::table('rents')->select('car_id', 'date')->where('user_id', '=', $idUsuario)->paginate(3);
         return $coches_alquilados;
     }
 

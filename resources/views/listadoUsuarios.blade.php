@@ -27,6 +27,11 @@
             </div>
             <button type="submmit" class="btn btn-success">Buscar</button>
         </form>
+        <p>
+            @if(Session::has('mensaje'))
+	            <div>{{Session::get('mensaje')}}</div>
+            @endif
+        </p>
         </div>
     </p>
 

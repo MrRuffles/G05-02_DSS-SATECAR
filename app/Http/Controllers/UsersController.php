@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Session\SessionManager;
 use App\User;
 use App\Car;
 
@@ -73,10 +74,17 @@ class UsersController extends Controller
         return redirect('/usuarios')->with('usuarios', $usuarios);
     }
 
-    public function find(){
+    public function find(SessionManager $sessionManager){
         $nombre = $_POST['name'];
         $email = $_POST['email'];
         $usuarios = User::getUsersBy($nombre, $email);
+        if(count($usuarios) == 0){
+            $usuarios = User::getAllUsersByName();
+            $sessionManager->flash('mensaje', 'Esos datos no coinciden con ningun usuario, se volvera a mostrar el listado completo.');
+        }
+        else{
+            $sessionManager->flash('mensaje', 'Esos son los datos del usuario buscado.');
+        }
         return view('listadoUsuarios')->with('usuarios', $usuarios);
     }
 

@@ -40,12 +40,12 @@ class UsersController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
-            'dni' => 'required|max:9|unique:users',
-            'name' => 'required|max:255',
-            'surnames' => 'required|max:255',
+            'dni' => 'required|max:9|min:9|unique:users',
+            'name' => 'required|max:100',
+            'surnames' => 'required|max:100',
             'email' => 'required|email|unique:users',
-            'phone' => 'required|max:9|unique:users',
-            'adress' => 'required|max:255',
+            'phone' => 'required|max:9|min:9|unique:users',
+            'adress' => 'required|max:100',
             'typeUser' => 'required'
         ]);
         User::create($request->all());
@@ -55,12 +55,12 @@ class UsersController extends Controller
 
     public function update(Request $request, $id){ 
         $this->validate($request, [
-            'dni' => 'required|max:9',
-            'name' => 'required|max:255',
-            'surnames' => 'required|max:255',
+            'dni' => 'required|max:9|min:9',
+            'name' => 'required|max:100',
+            'surnames' => 'required|max:100',
             'email' => 'required|email',
-            'phone' => 'required|max:9',
-            'adress' => 'required|max:255',
+            'phone' => 'required|max:9|min:9',
+            'adress' => 'required|max:100',
             'typeUser' => 'required'
         ]);
         $usuario = User::getUserById($id);

@@ -19,11 +19,11 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre</label>
-                    <input type="name" name="name" class="form-control" id="exampleFormControlInput1">
+                    <input type="name" name="name" placeholder = "Introduce un nombre" class="form-control" id="exampleFormControlInput1">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Correo Electrónico</label>
-                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1">
+                    <input type="email" name="email" placeholder = "Introduce un email" class="form-control" id="exampleFormControlInput1">
             </div>
             <button type="submmit" class="btn btn-success">Buscar</button>
         </form>
@@ -41,6 +41,7 @@
             <tr>
                 <th>DNI</th>
                 <th>Nombre</th>
+                <th>Apellidos</th>
                 <th>Correo Electrónico</th>
                 <th>Accion</th>
             </tr>
@@ -49,7 +50,8 @@
             @foreach($usuarios as $usuario)
             <tr>
                 <td scope="row">{{$usuario->dni}}</td>
-                <td>{{$usuario->name}} {{$usuario->surnames}}</td>
+                <td>{{$usuario->name}}</td>
+                <td>{{$usuario->surnames}}</td>
                 <td>{{$usuario->email}}</td>
                 <td>
                     <a type="button" href="/usuario/{{ $usuario->id }}" class="btn btn-success">Ver Perfil</a>

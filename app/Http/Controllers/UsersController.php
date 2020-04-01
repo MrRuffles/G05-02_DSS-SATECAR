@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Session\SessionManager;
 use App\User;
 use App\Car;
 
@@ -39,12 +40,12 @@ class UsersController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
-            'dni' => 'required',
-            'name' => 'required',
-            'surnames' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'adress' => 'required',
+            'dni' => 'required|max:9|min:9|unique:users',
+            'name' => 'required|max:100',
+            'surnames' => 'required|max:100',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|max:9|min:9|unique:users',
+            'adress' => 'required|max:100',
             'typeUser' => 'required'
         ]);
         User::create($request->all());
@@ -54,12 +55,12 @@ class UsersController extends Controller
 
     public function update(Request $request, $id){ 
         $this->validate($request, [
-            'dni' => 'required',
-            'name' => 'required',
-            'surnames' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'adress' => 'required',
+            'dni' => 'required|max:9|min:9',
+            'name' => 'required|max:100',
+            'surnames' => 'required|max:100',
+            'email' => 'required|email',
+            'phone' => 'required|max:9|min:9',
+            'adress' => 'required|max:100',
             'typeUser' => 'required'
         ]);
         $usuario = User::getUserById($id);
@@ -73,10 +74,17 @@ class UsersController extends Controller
         return redirect('/usuarios')->with('usuarios', $usuarios);
     }
 
-    public function find(){
+    public function find(SessionManager $sessionManager){
         $nombre = $_POST['name'];
         $email = $_POST['email'];
         $usuarios = User::getUsersBy($nombre, $email);
+        if(count($usuarios) == 0){
+            $usuarios = User::getAllUsersByName();
+            $sessionManager->flash('mensaje', 'Esos datos no coinciden con ningun usuario, se volvera a mostrar el listado completo.');
+        }
+        else{
+            $sessionManager->flash('mensaje', 'Esos son los datos del usuario buscado.');
+        }
         return view('listadoUsuarios')->with('usuarios', $usuarios);
     }
 

@@ -72,6 +72,7 @@ class User extends Authenticatable
 
     public static function getUsersBy($nombre, $email){
         //$usuarios = DB::table('users')->select('*')->where('name', '=', $nombre, 'AND', 'email', '=', $email)->paginate(7);
+        $usuarios = array();
         $usuarios = DB::table('users')->where('name', '=', $nombre)->Where('email', '=', $email)->paginate(7);
         return $usuarios;
     }

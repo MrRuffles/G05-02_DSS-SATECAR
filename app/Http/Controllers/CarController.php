@@ -52,9 +52,21 @@ class CarController extends Controller {
         $car->delete();
         return redirect('/coches');
     }
-
+    public function validateForm(Request $request){
+        $request->validate([
+            'enrollment' => 'required|size:8',
+            'years' => 'required|integer|max:40',
+            'km' => 'required|integer|max:500000',
+            'tradeMark' => 'required',
+            'color' => 'required', 
+            'fuelConsumption' => 'required|numeric|max:30',
+            'brand' => 'exists:App\Brand,name',
+            'conces' => 'exists:App\Concessionaire,name',
+        ]);
+    }
     public function saveCar(Request $request){
-        
+
+        $this->validateForm($request);
         $car = new Car();
         $car->enrollment = $request->input('enrollment');
         $car->years =  $request->input('years');
@@ -71,6 +83,7 @@ class CarController extends Controller {
     }
 
     public function updateCar(Request $request, $id){
+        $this->validateForm($request);
         $car = Car::find($id);   
         $car->enrollment = $request->input('enrollment');
         $car->years =  $request->input('years');

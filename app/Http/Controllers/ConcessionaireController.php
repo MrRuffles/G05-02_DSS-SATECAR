@@ -31,13 +31,13 @@ class ConcessionaireController extends Controller{
     }
     public function storeConcessionaire(Request $request){
         $this->validate($request, [
-            'name' => 'required',
-            'address' => 'required',
-            'cif' => 'required',
-            'phone' => 'required',
-            'city' => 'required',
-            'country' => 'required',
-            'email' => 'required'
+            'name' => 'required|max:50',
+            'address' => 'required|unique:concessionaires',
+            'cif' => 'required|max:9|min:9|unique:concessionaires',
+            'phone' => 'required|max:9|min:9|unique:concessionaires',
+            'city' => 'required|max:50',
+            'country' => 'required|max:50',
+            'email' => 'required|email|unique:concessionaires'
         ]);
         Concessionaire::create($request->all());
         $conceA = Concessionaire::orderBy('city')->paginate(7);
@@ -45,13 +45,13 @@ class ConcessionaireController extends Controller{
     }
     public function updateConcessionaire(Request $request, $id){ 
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|max:50',
             'address' => 'required',
-            'cif' => 'required',
-            'phone' => 'required',
-            'city' => 'required',
-            'country' => 'required',
-            'email' => 'required'
+            'cif' => 'required|max:9|min:9',
+            'phone' => 'required|max:9|min:9',
+            'city' => 'required|max:50',
+            'country' => 'required|max:50',
+            'email' => 'required|email'
         ]);
         $conceU = Concessionaire::getConcessionaireByID($id);
         Concessionaire::updateConcessionaire($request, $conceU);

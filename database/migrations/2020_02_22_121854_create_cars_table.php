@@ -27,7 +27,7 @@ class CreateCarsTable extends Migration
             $table->integer('brand_id')->unsigned();
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->integer('concessionaire_id')->unsigned();
-            $table->foreign('concessionaire_id')->references('id')->on('concessionaires');
+            $table->foreign('concessionaire_id')->references('id')->on('concessionaires')->onDelete('cascade')->onUpdate('cascade');;
             $table->timestamps();
         });
     }

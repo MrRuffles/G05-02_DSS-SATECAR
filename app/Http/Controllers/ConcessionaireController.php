@@ -25,6 +25,7 @@ class ConcessionaireController extends Controller{
     }
     public function deleteConcessionaire($id){
         $conceD = Concessionaire::find($id);
+        $conceD->delete();
         $conceA = Concessionaire::orderBy('city')->paginate(7);
         return redirect('/concesionario')->with('concesionarios', $conceA);
     }

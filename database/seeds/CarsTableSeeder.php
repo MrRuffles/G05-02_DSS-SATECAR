@@ -46,7 +46,7 @@ class CarsTableSeeder extends Seeder
             'color' => 'black',
             'fuelConsumption' => '7.2',
             'brand_id' => Brand::where('name', 'Dacia')->first()->id,
-            'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
+            'concessionaire_id' => Concessionaire::where('name', 'Grupo Marcos')->first()->id]
         );
         
         DB::table('cars')->insert([
@@ -68,7 +68,7 @@ class CarsTableSeeder extends Seeder
             'color' => 'red',
             'fuelConsumption' => '12',
             'brand_id' => Brand::where('name', 'Bugatti')->first()->id,
-            'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
+            'concessionaire_id' => Concessionaire::where('name', 'Grupo Marcos')->first()->id]
         );
             
         DB::table('cars')->insert([
@@ -90,7 +90,7 @@ class CarsTableSeeder extends Seeder
             'color' => 'grey',
             'fuelConsumption' => '9.6',
             'brand_id' => Brand::where('name', 'Mercedes-Benz')->first()->id,
-            'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
+            'concessionaire_id' => Concessionaire::where('name', 'Grupo Marcos')->first()->id]
         );
 
         DB::table('cars')->insert([

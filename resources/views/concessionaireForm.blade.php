@@ -49,6 +49,7 @@
 	</div>
 	<div class="col-sm-offset-2 col-sm-10">
 		<button type="submit" class="btn btn-primary btn-sm" >Añadir</button>
+		<a type="button" href="/concesionario" class="btn btn-secondary btn-sm">Cancelar</a>
 	</div>
 </form>
 @endsection

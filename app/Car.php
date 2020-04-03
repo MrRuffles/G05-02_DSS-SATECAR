@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Car extends Model
@@ -14,27 +14,22 @@ class Car extends Model
         return $this->belongsTo('App\Brand');
     }
 
+    public function concessionaire(){
+        return $this->belongsTo('App\Concessionaire');
+    }
+
     protected $fillable = [
         'enrollment','years', 'km' , 'trademark', 'color' ,'fuelConsumption'
     ];
 
-    /*
-    //Devolvemos el nombre de todos lo coches
-    public function showAllCars(){
-        $cars = Car::all();
-        foreach($cars as $car){
-            var_dump($car->enrollment);
-            var_dump($car->years);
-            var_dump($car->km);
-        }
+    //Esta funcion devuelve los accidentes de un coche
+    public static function getAllIncidentsByCar($idCoche){
+        $accidentes_sufridos = DB::table('suffers')->select('incident_id', 'date')->where('car_id', '=', $idCoche)->paginate(3);
+        return $accidentes_sufridos;
     }
-    //Buscar por matricula
-    public function findCar($enrollment){
-        $car = Car::where('enrollment','=', $enrollment)->get();
-        var_dump($car->tradeMark);
-        var_dump($car->years);
-        var_dump($car->km);
-        var_dump($car->color);
-        var_dump($car->fuelConsumption);
-    }*/
+    // ESTA FUNCION LA HE HECHO YO NO LA BORREIS AL ARREGLAR CONFLICTOS PLEASEEEE
+    public static function getCarById($id){
+        $coche = Car::where('id', '=', $id)->first();
+        return $coche;
+    }
 }

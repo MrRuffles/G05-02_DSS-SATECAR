@@ -1,5 +1,20 @@
 @extends('barradenavegacion')
 @section('content')
+
+<script>
+  function capturar(){
+    var porIdTarjeta=document.getElementById("numAccount").value;
+    document.getElementById("resultado").innerHTML="<h5>Número de tarjeta: " + porIdTarjeta + "</h5>";
+    var porIdSaldoNuevo=document.getElementById("newbalance").value;
+    if(porIdSaldoNuevo == ""){
+      porIdSaldoNuevo = "0";
+    }
+    document.getElementById("resultadoSaldoNuevo").innerHTML="<h6>Saldo a añadir: " + porIdSaldoNuevo + "€ </h6>";
+    var user = {!! $usuario->toJson() !!};
+    var aux = parseFloat(user.balance.toString()) + parseFloat(porIdSaldoNuevo.toString());
+    document.getElementById("resultadoSaldoNuevoMasSaldo").innerHTML="<h6>Saldo nuevo: " + aux + "€ </h6>";
+  }
+</script>
 <h3>Perfil de {{ $usuario->name }} {{ $usuario->surnames }} </h3>
 <div  style="padding: 10px; border-style: dashed; border-width: 1px; margin-bottom: 11px">
     <div class="row" style="justify-content: space-between; margin:0px">
@@ -15,6 +30,41 @@
     <p>Dirección: {{ $usuario->adress }}</p>
     <p>Correo Electronico: {{ $usuario->email }}</p>
     <h3>Tipo de Usuario: {{ $usuario->typeUser }}</h3>
+</div>
+<div>
+  <h3>Saldo actual: {{ $usuario->balance }}€</h3>
+  <div class="form-group" style="display: flex; flex-wrap: wrap">
+      <label style="width: 27%; text-align: right; margin-right: 5px">Número de tarjeta: </label>
+      <input required minlength="16" maxlength="19" style="width: 50%" class="form-control" name="numAccount" id="numAccount" placeholder="XXXX-XXXX-XXXX-XXXX" type="text"/>
+  </div>
+  <div class ="form-group" style="display: flex; flex-wrap: wrap">
+      <label style="width: 27%; text-align: right; margin-right: 5px">Saldo a añadir: </label>
+      <input required style="width: 30%" class="form-control" name="newbalance" id="newbalance" placeholder="¿Cuanto desea añadir?" type="text"/>
+    <div>
+      <input data-target="#abrirModalAñadirSaldo" data-toggle="modal" style="margin-left: 10px" type="button" value="Añadir Saldo" onclick="capturar()" class="btn btn-primary">
+    </div>    
+  </div>
+  <div class="modal fade" id="abrirModalAñadirSaldo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="border: 2px solid #ea3232;">
+        <div class="modal-header">
+          <div class="modal-title" id="resultado"></div>
+        </div>
+        <div class="modal-body">
+          <div class="row" style="justify-content: space-between; margin:0px">
+            <h6>Saldo actual: {{ $usuario->balance }} €</h6>
+          </div>
+          <div id="resultadoSaldoNuevo"></div>
+          <div><hr style="color: #0056b2;"></div>
+          <div id="resultadoSaldoNuevoMasSaldo"></div>    
+        </div>
+        <div class="modal-footer">
+          <button href="/usuario/{{ $usuario->id }}" class="btn btn-primary" type="submmit">Confirmar</button>
+            <input type="button" class="btn btn-outline-light" data-dismiss="modal" style="color: #000000; border-color: #d2d3d4" onclick="resetear()" value="Cancelar">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- MODAL DEL BOTON DE BORRAR PERFIL -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

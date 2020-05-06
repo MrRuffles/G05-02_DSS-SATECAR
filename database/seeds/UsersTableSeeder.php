@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         //
         DB::table('users')->delete();
-        DB::table('users')->insert([ 'dni' => '48832813H', 'name' => 'Francisco Javier', 'surnames' => 'Rico Pérez', 'adress' => 'Murcia', 'phone' => '608572918', 'typeUser' => 'Administrador', 'email' => 'francisco@gmail.com']);
+        DB::table('users')->insert([ 'dni' => '48832813H', 'name' => 'Francisco Javier', 'surnames' => 'Rico Pérez', 'adress' => 'Murcia', 'phone' => '608572918', 'typeUser' => 'Administrador', 'email' => 'francisco@gmail.com', 'balance' => '2400']);
         DB::table('users')->insert([ 'dni' => '87654321L', 'name' => 'Carlos', 'surnames' => 'Torralba', 'adress' => 'Alicante', 'phone' => '668974523', 'typeUser' => 'Vendedor', 'email' => 'carlos@gmail.com' ]);
         DB::table('users')->insert([ 'dni' => '48856872T', 'name' => 'Jose Enrique', 'surnames' => 'Rico Valera', 'adress' => 'Barcelona', 'phone' => '987654567', 'typeUser' => 'Vendedor', 'email' => 'jose@gmail.com']);
         DB::table('users')->insert([ 'dni' => '82342451L', 'name' => 'Mario', 'surnames' => 'Conejero Puche', 'adress' => 'Madrid', 'phone' => '608972918', 'typeUser' => 'Cliente', 'email' => 'mario@gmail.com' ]);

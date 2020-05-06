@@ -32,39 +32,44 @@
     <h3>Tipo de Usuario: {{ $usuario->typeUser }}</h3>
 </div>
 <div>
-  <h3>Saldo actual: {{ $usuario->balance }}€</h3>
-  <div class="form-group" style="display: flex; flex-wrap: wrap">
-      <label style="width: 27%; text-align: right; margin-right: 5px">Número de tarjeta: </label>
-      <input required minlength="16" maxlength="19" style="width: 50%" class="form-control" name="numAccount" id="numAccount" placeholder="XXXX-XXXX-XXXX-XXXX" type="text"/>
-  </div>
-  <div class ="form-group" style="display: flex; flex-wrap: wrap">
-      <label style="width: 27%; text-align: right; margin-right: 5px">Saldo a añadir: </label>
-      <input required style="width: 30%" class="form-control" name="newbalance" id="newbalance" placeholder="¿Cuanto desea añadir?" type="text"/>
-    <div>
-      <input data-target="#abrirModalAñadirSaldo" data-toggle="modal" style="margin-left: 10px" type="button" value="Añadir Saldo" onclick="capturar()" class="btn btn-primary">
-    </div>    
-  </div>
-  <div class="modal fade" id="abrirModalAñadirSaldo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content" style="border: 2px solid #ea3232;">
-        <div class="modal-header">
-          <div class="modal-title" id="resultado"></div>
-        </div>
-        <div class="modal-body">
-          <div class="row" style="justify-content: space-between; margin:0px">
-            <h6>Saldo actual: {{ $usuario->balance }} €</h6>
-          </div>
-          <div id="resultadoSaldoNuevo"></div>
-          <div><hr style="color: #0056b2;"></div>
-          <div id="resultadoSaldoNuevoMasSaldo"></div>    
-        </div>
-        <div class="modal-footer">
-          <button href="/usuario/{{ $usuario->id }}" class="btn btn-primary" type="submmit">Confirmar</button>
-            <input type="button" class="btn btn-outline-light" data-dismiss="modal" style="color: #000000; border-color: #d2d3d4" onclick="resetear()" value="Cancelar">
-        </div>
-      </div>
-    </div>
-  </div>
+<form action="{{ action('UsersController@addSaldo', $usuario->id) }}" method="POST" > 
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <h3>Saldo actual: {{ $usuario->balance }} €</h3>    
+            <input type="hidden" id="saldoActual" value="{{ $usuario->balance }}">
+            <div class="form-group" style="display: flex; flex-wrap: wrap">
+                <label style="width: 27%; text-align: right; margin-right: 5px">Número de tarjeta: </label>
+                <input maxlength="16" style="width: 50%" class="form-control" name="numAccount" id="numAccount" placeholder="XXXX-XXXX-XXXX-XXXX" type="text"/>
+            </div>
+            <div class ="form-group" style="display: flex; flex-wrap: wrap">
+              <label style="width: 27%; text-align: right; margin-right: 5px">Saldo a añadir: </label>
+              <input  style="width: 30%" class="form-control" name="newbalance" id="newbalance" placeholder="¿Cuanto desea añadir?" type="text"/>
+              <div>
+                  <input data-target="#abrirModalAñadirSaldo" data-toggle="modal" style="margin-left: 10px" type="button" value="Añadir Saldo" onclick="capturar()" class="btn btn-primary">
+              </div>    
+            </div>
+            <div class="modal fade" id="abrirModalAñadirSaldo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content" style="border: 2px solid #ea3232;">
+                  <div class="modal-header">
+                    <div class="modal-title" id="resultado"></div>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row" style="justify-content: space-between; margin:0px">
+                      <h6>Saldo actual: {{ $usuario->balance }} €</h6>
+                    </div>
+                    <div id="resultadoSaldoNuevo"></div>
+                    <div><hr style="color: #0056b2;"></div>
+                    <div id="resultadoSaldoNuevoMasSaldo"></div>    
+                  </div>
+                  <div class="modal-footer">
+                    <button href="/usuario/{{ $usuario->id }}" class="btn btn-primary" type="submmit">Confirmar</button>
+                    <input type="button" class="btn btn-outline-light" data-dismiss="modal" style="color: #000000; border-color: #d2d3d4" onclick="resetear()" value="Cancelar">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
 </div>
 <!-- MODAL DEL BOTON DE BORRAR PERFIL -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -44,6 +44,10 @@ Route::post('/usuarios', 'UsersController@find'); // Realiza la busqueda por 2 c
 Route::put('/usuario/{id}', 'UsersController@addSaldo'); // Realiza la acción de añadir saldo
 /////////////////////////////////////////////////////////////////////
 
+// RUTAS RELACIONADAS CON EL ALQUILER DE LOS VEHICULOS
+Route::get('alquiler', 'RentsController@getRent');
+
+
 Route::get('incidentes', 'IncidentsController@view'); //Lista Incidentes (paginadas)
 Route::get('marcas', 'BrandsController@view'); //Lista Marcas (paginadas)
 

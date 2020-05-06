@@ -56,3 +56,6 @@ Route::post('/crearConcesionario' , 'ConcessionaireController@storeConcessionair
 Route::get('/concesionario/{id}/editar' ,'ConcessionaireController@getUpdateConcessionaire');
 Route::post('/concesionario/{id}/editar' ,'ConcessionaireController@updateConcessionaire');
 Route::post('/concesionario/{id}/borrar' ,'ConcessionaireController@deleteConcessionaire');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

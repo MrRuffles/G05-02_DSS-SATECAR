@@ -26,6 +26,15 @@
         <a class="nav-item nav-link active" href="/coches">Administrar Coches<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/marcas">Listado Marcas<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/incidentes">Listado Incidentes<span class="sr-only"></span></a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/registro">{{ __('Registro') }}</a>
+            </li>
+        </ul>
+            
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             </ul>

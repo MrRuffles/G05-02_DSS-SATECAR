@@ -18,8 +18,8 @@ class RentsTableSeeder extends Seeder
         DB::table('rents')->insert([
             'car_id' => Car::where('enrollment', '8542 KLS')->first()->id,
             'user_id' => User::where('email', 'francisco@gmail.com')->first()->id,
-            'date' => Carbon::parse('2019-02-01 12:32:56'),
-            'date_end' => Carbon::parse('2019-02-02 12:32:56')
+            'date' => null,
+            'date_end' => null
         ]);
         DB::table('rents')->insert([
             'car_id' => Car::where('enrollment', '2543 SXX')->first()->id,

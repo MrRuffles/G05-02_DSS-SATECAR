@@ -40,6 +40,30 @@
 </form>
 
 <h3>Coches disponibles en las fechas</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Matricula</th>
+      <th scope="col">Consumo</th>
+      <th scope="col">Kilometros</th>
+      <th scope="col">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($coches_disponibles as $coche) 
+      <tr>
+          <td scope="row">{{$coche->id}}</td>
+          <td scope="row">{{$coche->enrollment}}</td>
+          <td>{{$coche->fuelConsumption}}</td>
+          <td>{{$coche->km}}</td>
+          <td>
+            <a type="button" href="#" class="btn btn-success">Accion</a>
+          </td>
+      </tr>
+    @endforeach
+  </tbody>
+</table>
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker({

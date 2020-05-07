@@ -9,12 +9,15 @@
 </script>
 <h1>Alquiler de vehiculos</h1>
 <h3>Selecciona las fechas del alquiler</h3>
-<div class="container">
+<form action="{{ action('RentsController@getDateOfRent') }}" method="POST" role="form">
+  <input type="hidden" name="_method" value="POST">
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  <div class="container">
     <div class='col-md-5'>
         <div class="form-group">
           <label>Fecha Inicio</label>
             <div class='input-group date' id='datetimepicker6'>
-                <input type='text' class="form-control" />
+                <input name="fecha_inicio" type='text' class="form-control" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -25,7 +28,7 @@
         <div class="form-group">
             <label>Fecha  Final</label>
             <div class='input-group date' id='datetimepicker7'>
-                <input type='text' class="form-control"/>
+                <input name="fecha_final" type='text' class="form-control"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -33,14 +36,17 @@
         </div>
     </div>
 </div>
+<button type="submmit" class="btn btn-success">Buscar</button>
+</form>
+
 <h3>Coches disponibles en las fechas</h3>
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker({
-            format: 'DD/MM/YYYY HH:mm:ss'
+            format: 'DD/MM/YYYY'
         });
         $('#datetimepicker7').datetimepicker({
-            format: 'DD/MM/YYYY HH:mm:ss',
+            format: 'DD/MM/YYYY',
             useCurrent: false //Important! See issue #1075
         });
         $("#datetimepicker6").on("dp.change", function (e) {

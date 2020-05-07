@@ -46,7 +46,7 @@ Route::put('/usuario/{id}', 'UsersController@addSaldo'); // Realiza la acción d
 
 // RUTAS RELACIONADAS CON EL ALQUILER DE LOS VEHICULOS
 Route::get('alquiler', 'RentsController@getRent');
-
+Route::post('/alquiler/fechas', 'RentsController@getDateOfRent');
 
 Route::get('incidentes', 'IncidentsController@view'); //Lista Incidentes (paginadas)
 Route::get('marcas', 'BrandsController@view'); //Lista Marcas (paginadas)

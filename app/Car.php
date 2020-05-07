@@ -32,4 +32,5 @@ class Car extends Model
         $coche = Car::where('id', '=', $id)->first();
         return $coche;
     }
+
 }

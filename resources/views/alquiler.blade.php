@@ -36,7 +36,9 @@
         </div>
     </div>
 </div>
-<button type="submmit" class="btn btn-success">Buscar</button>
+  
+  <button type="submmit" class="btn btn-success">Buscar</button>
+
 </form>
 
 <h3>Coches disponibles en las fechas</h3>
@@ -58,7 +60,7 @@
           <td>{{$coche->fuelConsumption}}</td>
           <td>{{$coche->km}}</td>
           <td>
-            <a type="button" href="#" class="btn btn-success">Accion</a>
+            <a type="button" href="#" class="btn btn-warning">Alquilar</a>
           </td>
       </tr>
     @endforeach

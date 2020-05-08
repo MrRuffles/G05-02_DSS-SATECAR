@@ -51,6 +51,20 @@
             </ul>
         @endif
         <input type="text" class="form-control" id="emailUsuario" name="email" value="{{ old('email') }}" placeholder="francisco@gmail.com">
+        
+    </div>
+    <div class="form-group">
+        <label for="form7-group">Contraseña</label>
+        {{--Error messages --}}
+        @if ($errors->has('password'))
+            <ul>
+                @foreach($errors->get('password') as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+        <input type="password" class="form-control" id="contraseña" name="password" value="{{ old('password') }}">
+        
     </div>
     <div class="form-group">
         <label for="form5-group">Teléfono</label>
@@ -89,12 +103,6 @@
             <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios1" value="Administrador">
             <label class="form-check-label" for="exampleRadios1">
                 Administrador
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios2" value="Vendedor">
-            <label class="form-check-label" for="exampleRadios2">
-                Vendedor
             </label>
         </div>
         <div class="form-check">

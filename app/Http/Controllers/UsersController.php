@@ -79,6 +79,7 @@ class UsersController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone' => 'required|max:9|min:9|unique:users',
             'adress' => 'required|max:100',
+
             'typeUser' => 'required'
         ]);*/
         $this->validateStore($request);
@@ -98,7 +99,7 @@ class UsersController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone' => 'required|max:9|min:9',
             'adress' => 'required|max:100',
-            'typeUser' => 'required'
+            'typeUser' => 'required',
         ]);
         $usuario = User::getUserById($id);
         User::updateUser($request, $usuario);
@@ -123,6 +124,17 @@ class UsersController extends Controller
             $sessionManager->flash('mensaje', 'Esos son los datos del usuario buscado.');
         }
         return view('listadoUsuarios')->with('usuarios', $usuarios);
+    }
+
+    public function addSaldo(Request $request, $id){
+        $this->validate(
+            $request, ['balance' => 'nullable']
+        );
+        $usuario = User::getUserById($id);
+        $valor = $_POST["newbalance"];
+        $usuario->balance += $valor;
+        $usuario->save();
+        return redirect()->action('UsersController@getPerfilUser', $id);
     }
 
 }

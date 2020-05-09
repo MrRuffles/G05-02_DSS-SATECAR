@@ -22,6 +22,9 @@ class UsersController extends Controller
     public function getRegistro(){
         return view('registroUsuario');
     }
+    public function getRegistroInicial(){
+        return view('registroInicial');
+    }
 
     public function getPerfilUser($id){
         $usuario = User::getUserById($id);
@@ -88,6 +91,15 @@ class UsersController extends Controller
         $user->save();
         $usuarios = User::getAllUsersByName();
         return redirect('/usuarios')->with('usuarios', $usuarios);
+    }
+    public function storeInicial(Request $request){
+    
+        $this->validateStore($request);
+        $user = new User();
+        $user = $this->StoreRequest($user,$request);
+        $user->save();
+        $usuarios = User::getAllUsersByName();
+        return redirect('/login');
     }
 
     public function update(Request $request, $id){ 

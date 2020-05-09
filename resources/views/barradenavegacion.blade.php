@@ -35,14 +35,15 @@
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="/registro">{{ __('Registro') }}</a>
+                <a class="nav-link" href="/registroInicial">{{ __('Registro') }}</a>
             </li>
         @endguest
         <div class="navbar-nav ml-auto">
         @if(Auth::check())
+            
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
+                <!--img src="images/User.png" width="20" height="20"--> {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -55,6 +56,10 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
+                
+                <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="usuario/{{Auth::user()->id}}">Perfil</a>
+                
                 </div>
             </li>
         @endif

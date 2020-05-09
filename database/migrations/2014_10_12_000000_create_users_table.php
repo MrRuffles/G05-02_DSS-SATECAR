@@ -22,11 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('typeUser'); 
             $table->string('email')->unique();
-<<<<<<< HEAD
             $table->string('password');
-=======
-            $table->double('balance')->nullable();
->>>>>>> bbf9288532fc953866e7a01bd529093e9fa42da5
+
             //$table->timestamp('email_verified_at')->nullable();
             //$table->string('password');
             //$table->rememberToken();

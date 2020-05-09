@@ -77,5 +77,6 @@ class User extends Authenticatable
         $usuarios = DB::table('users')->where('name', '=', $nombre)->Where('email', '=', $email)->paginate(7);
         return $usuarios;
     }
+
  
 }

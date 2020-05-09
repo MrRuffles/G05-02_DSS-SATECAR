@@ -22,7 +22,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'dni','name', 'surnames' , 'adress', 'phone' ,'typeUser' , 'email', 'balance'
+        'dni','name', 'surnames' , 'adress', 'phone' ,'typeUser' , 'email', 'password'
+
     ];
 
     public $timestamps = false;
@@ -76,5 +77,6 @@ class User extends Authenticatable
         $usuarios = DB::table('users')->where('name', '=', $nombre)->Where('email', '=', $email)->paginate(7);
         return $usuarios;
     }
+
  
 }

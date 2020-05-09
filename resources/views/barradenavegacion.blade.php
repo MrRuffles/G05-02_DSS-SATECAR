@@ -27,17 +27,54 @@
 
     <body id="container">
     <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
         <a class="navbar-brand" href="/">SATECAR</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+        @if(Auth::check())
         <a class="nav-item nav-link active" href="/usuarios">Administrar Usuarios<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/concesionario">Administrar Concesionarios<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/coches">Administrar Coches<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/marcas">Listado Marcas<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/incidentes">Listado Incidentes<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/alquiler">Alquiler<span class="sr-only"></span></a>
+        @endif
+        @guest
+        <div class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/registroInicial">{{ __('Registro') }}</a>
+            </li>
+        @endguest
+        <div class="navbar-nav ml-auto">
+        @if(Auth::check())
+            
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <!--img src="images/User.png" width="20" height="20"--> {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                
+                <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="usuario/{{Auth::user()->id}}">Perfil</a>
+                
+                </div>
+            </li>
+        @endif
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             </ul>
@@ -52,7 +89,9 @@
     </div>
     
     <footer class="container">
+    <div class="row justify-content-center">
         <p>&copy; 2019-2020 Company SATECAR, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </div>
     </footer>
 
     </body>

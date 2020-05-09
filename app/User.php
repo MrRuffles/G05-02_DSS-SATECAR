@@ -22,11 +22,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-<<<<<<< HEAD
         'dni','name', 'surnames' , 'adress', 'phone' ,'typeUser' , 'email', 'password'
-=======
-        'dni','name', 'surnames' , 'adress', 'phone' ,'typeUser' , 'email', 'balance'
->>>>>>> bbf9288532fc953866e7a01bd529093e9fa42da5
+
     ];
 
     public $timestamps = false;

@@ -71,6 +71,13 @@
   </tbody>
 </table>
 <h3>El coste del alquiler para {{$dias}} dias es de {{$precio}} €</h3>
+<p>
+<form action="{{ action('RentsController@confirmRent', [$idCoche, $precio]) }}" method="POST" role="form">
+  {{ csrf_field() }}
+  <input name="_method" type="hidden">
+  <button type="submit" class="btn btn-primary btn-lg">Confirmar Alquiler</button>>
+</form>
+</p>
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker({

@@ -17,7 +17,8 @@ class RentsController extends Controller
         ->with('coches_disponibles', $coches_disponibles)
         ->with('fecha_inicio', $fecha_inicio)
         ->with('fecha_final', $fecha_final)
-        ->with('precio', 0);
+        ->with('precio', 0)
+        ->with('idCoche', -1);
     }
 
     public function getDateOfRent(){
@@ -29,7 +30,8 @@ class RentsController extends Controller
         ->with('coches_disponibles', $coches_disponibles)
         ->with('fecha_inicio', $fecha_inicio)
         ->with('fecha_final', $fecha_final)
-        ->with('precio', 0);
+        ->with('precio', 0)
+        ->with('idCoche', -1);
     }
 
     public function rent(Request $request, $idCoche, $fecha_inicio, $fecha_final){
@@ -51,11 +53,30 @@ class RentsController extends Controller
         ->with('coches_disponibles', $coches_disponibles)
         ->with('fecha_inicio', $fecha_inicio)
         ->with('fecha_final', $fecha_final)
-        ->with('precio', $precio);
+        ->with('precio', $precio)
+        ->with('idCoche', $idCoche);
     }
 
-    public function confirmRent(){
+    public function confirmRent($idCoche, $coste_alquiler){
          // TENGO QUE RESTARLE AL USUARIO EL SALDO CORRESPONDIENTE Y CAMBIAR EL AVAILABLE DEL COCHE A FALSE
+         /*
+            Necesito
+                -> Saldo usuario
+                -> Coste del alquiler
+                -> idVehiculo
+         */
+        //$saldo_usuario = Auth::user()->balance;
+        if(Auth::user()->balance >= $coste_alquiler){
+            Auth::user()->balance -= $coste_alquiler;
+            Auth::user()->save();
+            $coche_alquilado = Car::getCarById($idCoche);
+            $coche_alquilado->available = false;
+            $coche_alquilado->save();
+            return redirect()->action('RentsController@getRent');
+        }
+        else{
+            // no se realiza el alquiler
+        }
     }
 
 

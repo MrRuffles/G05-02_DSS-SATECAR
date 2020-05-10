@@ -13,9 +13,11 @@ class RentsController extends Controller
         $coches_disponibles = array();
         $fecha_inicio = "";
         $fecha_final = "";
-        return view('alquiler')->with('coches_disponibles', $coches_disponibles)
-                                ->with('fecha_inicio', $fecha_inicio)
-                                ->with('fecha_final', $fecha_final);
+        return view('alquiler')->with('dias', 0)
+        ->with('coches_disponibles', $coches_disponibles)
+        ->with('fecha_inicio', $fecha_inicio)
+        ->with('fecha_final', $fecha_final)
+        ->with('precio', 0);
     }
 
     public function getDateOfRent(){
@@ -23,21 +25,38 @@ class RentsController extends Controller
         $fecha_final = $_POST["fecha_final"];
         echo $fecha_inicio . " " . $fecha_final;
         $coches_disponibles = Car::getCarsAvailable();
-        return view('alquiler')->with('coches_disponibles', $coches_disponibles)
-                                ->with('fecha_inicio', Carbon::parse($fecha_inicio))
-                                ->with('fecha_final', Carbon::parse($fecha_final));
+        return view('alquiler')->with('dias', 0)
+        ->with('coches_disponibles', $coches_disponibles)
+        ->with('fecha_inicio', $fecha_inicio)
+        ->with('fecha_final', $fecha_final)
+        ->with('precio', 0);
     }
 
     public function rent(Request $request, $idCoche, $fecha_inicio, $fecha_final){
+        $fecha_i = Carbon::parse($fecha_inicio);
+        $fecha_f = Carbon::parse($fecha_final);
+        $diferenciaDias = $fecha_f->diffInDays($fecha_i);
+        // TENGO QUE CALCULAR EL COSTE
+        echo "La diferencia de dias es: " . $diferenciaDias . "\n";
         $id_usuario = Auth::user()->id;
         DB::table('rents')->insert([
             'car_id' => $idCoche,
             'user_id' => $id_usuario,
-            'date' => Carbon::parse($fecha_inicio),
-            'date_end' => Carbon::parse($fecha_final)
+            'date' => $fecha_i,
+            'date_end' => $fecha_f
         ]);
-        // TENGO QUE RESTARLE AL USUARIO EL SALDO CORRESPONDIENTE Y CAMBIAR EL AVAILABLE DEL COCHE A FALSE
-        return view('paginaprincipal');
+        $coches_disponibles = Car::getCarsAvailable();
+        $precio = $diferenciaDias * 50;
+        return view('alquiler')->with('dias', $diferenciaDias)
+        ->with('coches_disponibles', $coches_disponibles)
+        ->with('fecha_inicio', $fecha_inicio)
+        ->with('fecha_final', $fecha_final)
+        ->with('precio', $precio);
     }
+
+    public function confirmRent(){
+         // TENGO QUE RESTARLE AL USUARIO EL SALDO CORRESPONDIENTE Y CAMBIAR EL AVAILABLE DEL COCHE A FALSE
+    }
+
 
 }

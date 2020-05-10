@@ -70,7 +70,7 @@
     @endforeach
   </tbody>
 </table>
-<h3>Coste del alquiler: X€</h3>
+<h3>El coste del alquiler para {{$dias}} dias es de {{$precio}} €</h3>
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker({

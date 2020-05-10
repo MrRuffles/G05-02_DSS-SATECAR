@@ -41,7 +41,7 @@
 
 </form>
 
-<h3>Coches disponibles en las fechas {{$fecha_inicio}} y {{$fecha_final}}</h3>
+<h3>Vehiculos disponibles en las fechas {{$fecha_inicio}} y {{$fecha_final}}</h3>
 <table class="table">
   <thead>
     <tr>
@@ -60,7 +60,11 @@
           <td>{{$coche->fuelConsumption}}</td>
           <td>{{$coche->km}}</td>
           <td>
-            <a type="button" href="#" class="btn btn-warning">Alquilar</a>
+            <form action="{{ action('RentsController@rent', [$coche->id, $fecha_inicio, $fecha_final]) }}" method="POST" role="form">
+              {{ csrf_field() }}
+              <input name="_method" type="hidden">
+              <button type="submit" class="btn btn-warning">Alquilar</button>
+            </form>
           </td>
       </tr>
     @endforeach
@@ -70,10 +74,10 @@
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker({
-            format: 'DD/MM/YYYY'
+            format: 'DD-MM-YYYY'
         });
         $('#datetimepicker7').datetimepicker({
-            format: 'DD/MM/YYYY',
+            format: 'DD-MM-YYYY',
             useCurrent: false //Important! See issue #1075
         });
         $("#datetimepicker6").on("dp.change", function (e) {

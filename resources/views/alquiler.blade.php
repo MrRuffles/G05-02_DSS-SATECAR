@@ -41,7 +41,7 @@
 
 </form>
 
-<h3>Coches disponibles en las fechas</h3>
+<h3>Coches disponibles en las fechas {{$fecha_inicio}} y {{$fecha_final}}</h3>
 <table class="table">
   <thead>
     <tr>
@@ -66,6 +66,7 @@
     @endforeach
   </tbody>
 </table>
+<h3>Coste del alquiler: X€</h3>
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker({

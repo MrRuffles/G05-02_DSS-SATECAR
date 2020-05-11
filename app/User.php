@@ -78,5 +78,8 @@ class User extends Authenticatable
         return $usuarios;
     }
 
+    public static function giveBack($id_usuario, $id_coche){
+        DB::table('rents')->where('car_id', '=', $id_coche)->Where('user_id', '=', $id_usuario)->delete();
+    }
  
 }

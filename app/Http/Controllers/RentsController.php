@@ -39,7 +39,7 @@ class RentsController extends Controller
         $fecha_f = Carbon::parse($fecha_final);
         $diferenciaDias = $fecha_f->diffInDays($fecha_i);
         // TENGO QUE CALCULAR EL COSTE
-        echo "La diferencia de dias es: " . $diferenciaDias . "\n";
+        //echo "La diferencia de dias es: " . $diferenciaDias . "\n";
         $id_usuario = Auth::user()->id;
         /*DB::table('rents')->insert([
             'car_id' => $idCoche,

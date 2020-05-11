@@ -56,7 +56,7 @@ Route::post('/usuario/{id}/editar', 'UsersController@update'); // Realiza la acc
 Route::post('/usuario/{id}/borrar', 'UsersController@delete'); // Realiza la acción de borrar los datos
 Route::post('/usuarios', 'UsersController@find'); // Realiza la busqueda por 2 campos distintos
 Route::put('/usuario/{id}', 'UsersController@addSaldo'); // Realiza la acción de añadir saldo
-Route::put('/usuario/{id}/devolver', 'UsersController@giveBack');
+Route::post('/usuario/{id_usuario}/{id_coche}/devolver', 'UsersController@giveBack');
 /////////////////////////////////////////////////////////////////////
 
 // RUTAS RELACIONADAS CON EL ALQUILER DE LOS VEHICULOS

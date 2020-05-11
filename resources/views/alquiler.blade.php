@@ -40,7 +40,7 @@
   <button type="submmit" class="btn btn-success">Buscar</button>
 
 </form>
-
+@if($fecha_inicio != "" && $fecha_final != "")
 <h3>Vehiculos disponibles en las fechas {{$fecha_inicio}} y {{$fecha_final}}</h3>
 <table class="table">
   <thead>
@@ -70,14 +70,17 @@
     @endforeach
   </tbody>
 </table>
+@endif
+@if($precio != -1)
 <h3>El coste del alquiler para {{$dias}} dias es de {{$precio}} €</h3>
 <p>
-<form action="{{ action('RentsController@confirmRent', [$idCoche, $precio]) }}" method="POST" role="form">
+<form action="{{ action('RentsController@confirmRent', [$idCoche, $precio, $fecha_inicio, $fecha_final]) }}" method="POST" role="form">
   {{ csrf_field() }}
   <input name="_method" type="hidden">
-  <button type="submit" class="btn btn-primary btn-lg">Confirmar Alquiler</button>>
+  <button type="submit" class="btn btn-primary btn-lg">Confirmar Alquiler</button>
 </form>
 </p>
+@endif
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker({

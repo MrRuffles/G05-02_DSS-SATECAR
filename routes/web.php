@@ -56,13 +56,14 @@ Route::post('/usuario/{id}/editar', 'UsersController@update'); // Realiza la acc
 Route::post('/usuario/{id}/borrar', 'UsersController@delete'); // Realiza la acción de borrar los datos
 Route::post('/usuarios', 'UsersController@find'); // Realiza la busqueda por 2 campos distintos
 Route::put('/usuario/{id}', 'UsersController@addSaldo'); // Realiza la acción de añadir saldo
+Route::put('/usuario/{id}/devolver', 'UsersController@giveBack');
 /////////////////////////////////////////////////////////////////////
 
 // RUTAS RELACIONADAS CON EL ALQUILER DE LOS VEHICULOS
 Route::get('alquiler', 'RentsController@getRent');
 Route::post('/alquiler/fechas', 'RentsController@getDateOfRent');
 Route::post('/alquiler/{id}/{fecha_inicio}/{fecha_final}', 'RentsController@rent');
-Route::post('/alquiler/{id}/{coste}', 'RentsController@confirmRent');
+Route::post('/alquiler/{id}/{coste}/{fecha_inicio}/{fecha_final}', 'RentsController@confirmRent');
 
 Route::get('incidentes', 'IncidentsController@view'); //Lista Incidentes (paginadas)
 Route::get('marcas', 'BrandsController@view'); //Lista Marcas (paginadas)

@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('paginaprincipal');
 });
 
+Route::get('/contacto', function () {
+    return view('paginaContacto');
+});
+
 //////////RUTAS COCHES//////////
 ////////////////////////////////
 //Rutas obtener coches

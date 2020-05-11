@@ -26,6 +26,7 @@
         <a class="nav-item nav-link active" href="/coches">Administrar Coches<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/marcas">Listado Marcas<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/incidentes">Listado Incidentes<span class="sr-only"></span></a>
+        <a class="nav-item nav-link active" href="/contacto">Contacto<span class="sr-only"></span></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             </ul>

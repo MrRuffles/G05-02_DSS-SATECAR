@@ -149,4 +149,9 @@ class UsersController extends Controller
         return redirect()->action('UsersController@getPerfilUser', $id);
     }
 
+    public function giveBack($id_usuario, $id_coche){
+        User::giveBack($id_usuario, $id_coche);
+        return redirect()->action('UsersController@getPerfilUser', $id_usuario);
+    }
+
 }

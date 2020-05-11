@@ -32,4 +32,9 @@ class Car extends Model
         $coche = Car::where('id', '=', $id)->first();
         return $coche;
     }
+    
+    public static function getCarsAvailable(){
+        $coches_disponible = DB::table('cars')->where('available', '=', true)->get();
+        return $coches_disponible;
+    }
 }

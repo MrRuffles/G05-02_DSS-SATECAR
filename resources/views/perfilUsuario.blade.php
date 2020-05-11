@@ -104,6 +104,7 @@
                     <tr>
                         <th>Matrícula</th>
                         <th>Fecha de alquiler</th>
+                        <th>Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -113,6 +114,13 @@
                         <tr>
                           <td scope="row">{{$dato_coche->enrollment}}</td>
                           <td>{{$coche->date}}</td>
+                          <td>
+                            <form action="{{ action('UsersController@giveBack', [$usuario->id, $dato_coche->id]) }}" method="POST" role="form">
+                                {{ csrf_field() }}
+                                <input name="_method" type="hidden">
+                                <button type="submit" class="btn btn-success">Devolver</button>
+                            </form>
+                          </td>
                         </tr>
                       @endif
                       @endforeach

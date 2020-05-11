@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $coches_alquilados;
     }
 
+    public static function getUsersRentCars(){
+        $clients_rented= DB::table('users', 'rents')->select('name','users.id')->where('users_id', '=', 'users.id')->distinct();
+        return $clients_rented;
+    }
+
     public static function updateUser(Request $request, $usuario){
         $usuario->update($request->all());
     }

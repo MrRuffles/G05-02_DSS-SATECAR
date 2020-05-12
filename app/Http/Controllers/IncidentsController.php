@@ -15,11 +15,44 @@ class IncidentsController extends Controller
 
     public function getClients(){
         $clients_rented = User::getUsersRentCars();
-        return view('regIncidente', ['clients_rented' => $clients_rented]);
+        $cars_rented = array();
+        $incidents = array();
+        $idUsuario = 0;
+        return view('regIncidente')->with('clients_rented', $clients_rented)
+                                    ->with('cars_rented',$cars_rented)
+                                    ->with('idUsuario',$idUsuario)
+                                    ->with('incidents', $incidents);
     }
     
     public function getCarsRented($idUsuario){
-        $cars_rented = User::getAllUserRent($idUsuario);
-        return view();
+        $cars_rented = User::getAllUserRentedCars($idUsuario);
+        $clients_rented = User::getUsersRentCars();
+        $incidents = array();
+        return view('regIncidente')->with('clients_rented', $clients_rented)
+                                    ->with('cars_rented',$cars_rented)
+                                    ->with('idUsuario',$idUsuario)
+                                    ->with('incidents', $incidents);
+    }
+    public function getIncidents($idUsuario, $idCoche){
+        $cars_rented = User::getAllUserRentedCars($idUsuario);
+        $clients_rented = User::getUsersRentCars();
+        $incidents = Incident::getAllIncidents();
+        return view('regIncidente')->with('clients_rented', $clients_rented)
+                                    ->with('cars_rented',$cars_rented)
+                                    ->with('idUsuario',$idUsuario)
+                                    ->with('idCoche', $idCoche)
+                                    ->with('incidents', $incidents);
+    }
+
+    public function getRegister($idUsuario, $idCoche, $idIncidente){
+        $cars_rented = User::getAllUserRentedCars($idUsuario);
+        $clients_rented = User::getUsersRentCars();
+        $incidents = Incident::getAllIncidents();
+        return view('regIncidente')->with('clients_rented', $clients_rented)
+                                    ->with('cars_rented',$cars_rented)
+                                    ->with('idUsuario',$idUsuario)
+                                    ->with('idCoche', $idCoche)
+                                    ->with('incidents', $incidents)
+                                    ->with('idIncidente', $idIncidente);
     }
 }

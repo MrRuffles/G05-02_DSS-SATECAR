@@ -18,4 +18,9 @@ class Incident extends Model
         $accidente = Incident::where('id', '=', $id)->first();
         return $accidente;
     }
+
+    public static function getAllIncidents(){
+        $incidents = Incident::all();
+        return $incidents;
+    } 
 }

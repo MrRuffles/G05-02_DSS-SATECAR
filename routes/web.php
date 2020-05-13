@@ -68,6 +68,12 @@ Route::post('/alquiler/{id}/{coste}/{fecha_inicio}/{fecha_final}', 'RentsControl
 Route::get('incidentes', 'IncidentsController@view'); //Lista Incidentes (paginadas)
 Route::get('marcas', 'BrandsController@view'); //Lista Marcas (paginadas)
 
+//RUTAS PARA INCIDENTES
+Route::get('/incidentes/registro', 'IncidentsController@getClients');
+Route::post('/incidentes/registro/{id}', 'IncidentsController@getCarsRented');
+Route::post('/incidentes/registro/{id}/{car_id}', 'IncidentsController@getIncidents');
+Route::post('/incidentes/registro/{id}/{car_id}/{id_incidente}', 'IncidentsController@getRegister');
+Route::post('/incidentes/registro/{id}/{car_id}/{id_incidente}/{price}/{balance}', 'IncidentsController@confirmRegister');
 
 //Rutas obtener concesionario
 //Route::get('/concesionario', 'ConcessionaireController@getAllConcessionaire');

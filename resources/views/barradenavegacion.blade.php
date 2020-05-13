@@ -38,6 +38,7 @@
         <a class="nav-item nav-link active" href="/coches">Administrar Coches<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/marcas">Listado Marcas<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/incidentes">Listado Incidentes<span class="sr-only"></span></a>
+        <a class="nav-item nav-link active" href="/incidentes/registro">Registro Incidente<span class="sr-only"></span></a>
         <a class="nav-item nav-link active" href="/alquiler">Alquiler<span class="sr-only"></span></a>
         @endif
         @guest
@@ -70,7 +71,7 @@
                     </form>
                 
                 <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="usuario/{{Auth::user()->id}}">Perfil</a>
+                    <a class="dropdown-item" href="{{ action('UsersController@getPerfilUser', [Auth::user()->id]) }}">Perfil</a>
                 
                 </div>
             </li>

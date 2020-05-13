@@ -71,7 +71,7 @@
                     </form>
                 
                 <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="usuario/{{Auth::user()->id}}">Perfil</a>
+                    <a class="dropdown-item" href="{{ action('UsersController@getPerfilUser', [Auth::user()->id]) }}">Perfil</a>
                 
                 </div>
             </li>

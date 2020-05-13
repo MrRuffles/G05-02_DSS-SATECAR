@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use DB;
+use App\Car;
 
 class User extends Authenticatable
 {
@@ -91,6 +92,9 @@ class User extends Authenticatable
 
     public static function giveBack($id_usuario, $id_coche){
         DB::table('rents')->where('car_id', '=', $id_coche)->Where('user_id', '=', $id_usuario)->delete();
+        $coche = Car::getCarById($id_coche);
+        $coche->available = true;
+        $coche->save();
     }
  
 }

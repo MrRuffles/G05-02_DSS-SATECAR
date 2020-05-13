@@ -5,7 +5,7 @@
 <div class="container">
 @if($idIncidente != 0)
   <div class = 'row'>
-  <h3> Registrar Incidente {{$registro[0]->type}}, con prfecio {{$registro[0]->price}} al Coche {{$registro[0]->enrollment}} del Cliente {{$registro[0]->name}}. </h3>
+  <h3> Registrar Incidente {{$registro[0]->type}}, con coste {{$registro[0]->price}}€ al Coche {{$registro[0]->enrollment}} del Cliente {{$registro[0]->name}}. </h3>
   <input data-target="#abrirModalConfirmacion" data-toggle="modal" style="margin-left: 10px" type="button" value="Confirmar" class="btn btn-primary">
   </div>
   <div class="modal fade" id="abrirModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -16,7 +16,7 @@
         </div>
         <div class="modal-body">
           <div class="row" style="justify-content: space-between; margin:0px">
-            <h5>¿Esta seguro de realizar el registro? {{$registro[0]->price}}</h5>
+            <h5>¿Esta seguro de realizar el registro?</h5>
           </div> 
         </div>
         <div class="modal-footer">

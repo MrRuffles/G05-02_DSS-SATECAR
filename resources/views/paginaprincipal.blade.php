@@ -23,17 +23,21 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
+</p>
+<p>
+<button type="button" class="btn btn-primary" href="/coches">Mostrar coches</button>
+<button type="button" class="btn btn-primary" href="/concesionario">Mostrar concesionarios</button>
 </p>
 <p>
     <h3>Pagina de alquiler de vehiculos</h3>
 </p>
-<p>
-<a href="https://twitter.com/SateCar?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @SateCar</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</p>
+
 <p>
     En nuestra página encontraras la mayor cantidad de coches para alquilar, desde
     modelos de gama alta, para la gente que le gustas las emociones fuertes y la velocidad,
     hasta modelos de gama mas económica para los conductores que necesitan un vehiculo para su dia a dia.
+</p>
+<p>
+<a href="https://twitter.com/SateCar?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @SateCar</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </p>
 @endsection

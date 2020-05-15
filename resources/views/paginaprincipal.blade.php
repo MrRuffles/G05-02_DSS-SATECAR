@@ -25,8 +25,8 @@
 </div>
 </p>
 <p>
-<button type="button" class="btn btn-primary" href="/coches">Mostrar coches</button>
-<button type="button" class="btn btn-primary" href="/concesionario">Mostrar concesionarios</button>
+<button type="button" class="btn btn-primary btn-lg btn-block" href="/coches">Mostrar coches</button>
+<button type="button" class="btn btn-primary btn-lg btn-block" href="/concesionario">Mostrar concesionarios</button>
 </p>
 <p>
     <h3>Pagina de alquiler de vehiculos</h3>

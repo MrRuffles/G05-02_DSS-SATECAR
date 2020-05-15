@@ -2,9 +2,9 @@
 @section('content')
 <h1>SATECAR</h1>
 <p>
-    <h3>Contacta con nosotros</h3>
+    <h3 align="center">Contacta con nosotros</h3>
 </p>
-<p>
+<p align="center">
 
     Francisco Javier Rico Pérez <br>
     Carlos Torralba Ruiz <br>
@@ -13,12 +13,14 @@
     Pablo García De Ávila <br>
     <br>
     <br>
-    Avenida del Mediterraneo, 0300 Alicante.
+    Avenida del Mediterraneo 1024, 0300 Alicante.<br>
+    Telefono: 965 70 80 90 <br>
+    Email: satecar@dss.es
 
 </p>
 
 <!--facebook-->
-<div class="social-buttons">
+<div class="social-buttons"  align="center">
     <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url ?? '') }}"
         target="_blank">
         <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><g fill="none" fill-rule="evenodd"><path d="M.32.183h55.127V55.31H.32V.183z" fill="#3B5998"/><path d="M32.446 24.287h-3.108V22.25c0-.766.507-.945.865-.945h2.192V17.94l-3.02-.01c-3.352 0-4.114 2.508-4.114 4.114v2.243h-1.938v3.467h1.94v9.81h4.076v-9.81h2.75l.358-3.467" fill="#FFF"/></g></svg></a>

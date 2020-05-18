@@ -1,5 +1,6 @@
 @extends('barradenavegacion')
 @section('content')
+<h2 align="center">Estos son los concesionarios con los que trabajamos</h2>
 <table class="table table-striped table-dark">
   <thead>
 

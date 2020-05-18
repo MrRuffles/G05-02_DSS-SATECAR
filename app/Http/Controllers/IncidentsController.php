@@ -63,7 +63,7 @@ class IncidentsController extends Controller
         $incidents = Incident::getAllIncidents();
         $registro = Incident::getRegister($idUsuario,$idCoche,$idIncidente);
         $priceInc = 0;
-        $balanceUs = null;
+        $balanceUs = 0;
         return view('regIncidente')->with('clients_rented', $clients_rented)
                                     ->with('cars_rented',$cars_rented)
                                     ->with('idUsuario',$idUsuario)
@@ -80,9 +80,9 @@ class IncidentsController extends Controller
             'date' => Carbon::now()->format('Y-m-d')
             ]);
         $usuario = User::getUserById($idUsuario);
-        if($balanceUs == null){
+        //if($balanceUs == null){
             $balanceUs = 0;
-        }
+        //}
         $usuario->balance =  $balanceUs - $priceInc;
         $usuario->save();
         DB::commit();

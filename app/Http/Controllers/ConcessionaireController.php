@@ -57,4 +57,9 @@ class ConcessionaireController extends Controller{
         Concessionaire::updateConcessionaire($request, $conceU);
         return view('concessionaire')->with('concesionario', $conceU);
     }
+    public function getAllConcesionarios(){
+        $concesionarios = Concessionaire::orderBy('city')->paginate(7);
+        return view('concesionarios')->with('concesionarios',$concesionarios);
+    }
+
 }

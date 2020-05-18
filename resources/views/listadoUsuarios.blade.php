@@ -4,12 +4,6 @@
     <h3>Administración de Usuarios</h3>
     <div>
     <p>
-        <div id="botonCrearUsuarios">
-            <!-- ESTE BOTON REDIRIGIRA A LA PÁGINA DE CREACIÓN DE USUARIOS -->
-            <a href="/registro" type="button" class="btn btn-primary btn-lg btn-block">Crear Usuario Nuevo</a> 
-        </div>
-    </p>
-    <p>
         <div>
         <p>
             <h3>Buscador</h3>

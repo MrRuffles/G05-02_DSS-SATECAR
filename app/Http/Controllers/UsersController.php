@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Session\SessionManager;
 use App\User;
 use App\Car;
-
+use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -14,19 +14,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 class UsersController extends Controller
 {
-    public function getAllUsers(){ 
-        $usuarios = User::getAllUsersByName();
-        return view('listadoUsuarios')->with('usuarios', $usuarios);
-    }
-
-    public function getRegistro(){
-        return view('registroUsuario');
-    }
-    public function getRegistroInicial(){
-        return view('registroInicial');
-    }
-
-    public function getPerfilUser($id){
+    public function getPerfilUserAdmin($id){
+        //$id = Auth::user()->id;
+        echo $id;
         $usuario = User::getUserById($id);
         $coches_alquilados = User::getAllUserRent($id); // Tengo el id de todos los coches alquilados y su fecha de alquiler
         $datos_concretos_coches = array();
@@ -40,11 +30,47 @@ class UsersController extends Controller
                                     ->with('datos_coche', $datos_concretos_coches);
     }
 
-    public function getUpdateUser($id){
+    public function getAllUsers(){ 
+        $usuarios = User::getAllUsersByName();
+        return view('listadoUsuarios')->with('usuarios', $usuarios);
+    }
+
+    public function getRegistro(){
+        return view('registroUsuario');
+    }
+    public function getRegistroInicial(){
+        return view('registroInicial');
+    }
+
+    public function getPerfilUser(){
+        $id = Auth::user()->id;
+        $usuario = User::getUserById($id);
+        $coches_alquilados = User::getAllUserRent($id); // Tengo el id de todos los coches alquilados y su fecha de alquiler
+        $datos_concretos_coches = array();
+        $i = 0;
+        foreach($coches_alquilados as $coche_alquilado){
+            $coche = Car::getCarById($coche_alquilado->car_id);
+            $datos_concretos_coches[$i++] = $coche;
+        }
+        return view('perfilUsuario')->with('usuario', $usuario)
+                                    ->with('coches', $coches_alquilados)
+                                    ->with('datos_coche', $datos_concretos_coches);
+    }
+
+    public function getUpdateUser(){
+        $id = Auth::user()->id;
         $usuario = User::getUserById($id);
         return view('editarUsuario')->with('usuario', $usuario);
         
     }
+
+    public function getUpdateUserAdmin($id){
+        //$id = Auth::user()->id;
+        $usuario = User::getUserById($id);
+        return view('editarUsuario')->with('usuario', $usuario);
+        
+    }
+
     //Almacenamos los datos del formulario
     public function StoreRequest(User $user, Request $request){
         $user->dni = $request->dni;
@@ -103,6 +129,7 @@ class UsersController extends Controller
     }
 
     public function update(Request $request, $id){ 
+        echo $id;
         $this->validate($request, [
             'dni' => 'required|max:9|min:9',
             'name' => 'required|max:100',
@@ -113,6 +140,7 @@ class UsersController extends Controller
             'adress' => 'required|max:100',
             'typeUser' => 'required',
         ]);
+        echo $id;
         $usuario = User::getUserById($id);
         User::updateUser($request, $usuario);
         return redirect()->action('UsersController@getPerfilUser', $id);
@@ -121,7 +149,7 @@ class UsersController extends Controller
     public function delete(Request $request, $id){
         $usuario = User::getUserById($id)->delete();
         $usuarios = User::getAllUsersByName();
-        return redirect('/usuarios')->with('usuarios', $usuarios);
+        return redirect('/');
     }
 
     public function find(SessionManager $sessionManager){

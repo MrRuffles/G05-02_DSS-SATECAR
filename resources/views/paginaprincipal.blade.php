@@ -27,7 +27,7 @@
 <div align="center">
   <p>
   <a type="button" class="btn btn-primary btn-lg" href="/flotaCoches">Mostrar coches</a>
-  <a type="button" class="btn btn-primary btn-lg" href="/concesionario">Mostrar concesionarios</a>
+  <a type="button" class="btn btn-primary btn-lg" href="/concesionarios">Mostrar concesionarios</a>
   </p>
 </div> 
 <p>
@@ -38,6 +38,10 @@
     En nuestra página encontraras la mayor cantidad de coches para alquilar, desde
     modelos de gama alta, para la gente que le gustas las emociones fuertes y la velocidad,
     hasta modelos de gama mas económica para los conductores que necesitan un vehiculo para su dia a dia.
+</p>
+<p>
+<a type="button" class="btn btn-primary btn-lg" href="/contacto">Contacto<span class="sr-only"></span></a>
+<a type="button" class="btn btn-primary btn-lg" href="#">Info proyecto<span class="sr-only"></span></a>
 </p>
 <p>
 <a href="https://twitter.com/SateCar?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @SateCar</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

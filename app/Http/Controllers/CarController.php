@@ -113,7 +113,7 @@ class CarController extends Controller {
     }
     //$clients_rented = DB::select('SELECT DISTINCT name, users.id FROM users, rents WHERE users.id = rents.user_id ');
     public function soloCars(){
-        $coches = DB::select('Select cars.*, brands.name as marca FROM cars, brands');
+        $coches = DB::select('Select DISTINCT cars.*, brands.name as marca FROM cars, brands');
         return view('soloCoches')->with('cars', $coches);
     }
 }

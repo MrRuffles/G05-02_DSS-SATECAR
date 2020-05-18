@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('adress');
             $table->string('phone');
             $table->string('typeUser'); 
-            $table->double('balance')->nullable();
+            $table->double('balance')->default(0);
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();

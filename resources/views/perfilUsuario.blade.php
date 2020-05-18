@@ -20,7 +20,12 @@
     <div class="row" style="justify-content: space-between; margin:0px">
         <label>DNI: {{ $usuario->dni }}</label>
         <div>
-            <a href="/usuario/{{ $usuario->id }}/editar" type="button" class="btn btn-primary">Editar Perfil</a>
+            @if(Auth::user()->typeUser == 'Cliente')
+              <a href="/usuario/editar" type="button" class="btn btn-primary">Editar Perfil</a>
+            @elseif (Auth::user()->typeUser == 'Administrador')
+              <a href="/usuario/{{$usuario->id}}/editar" type="button" class="btn btn-primary">Editar Perfil</a>
+              
+            @endif
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                 Eliminar Perfil
             </button>

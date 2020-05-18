@@ -33,14 +33,17 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         @if(Auth::check())
-        <a class="nav-item nav-link active" href="/usuarios">Administrar Usuarios<span class="sr-only"></span></a>
-        <a class="nav-item nav-link active" href="/concesionario">Administrar Concesionarios<span class="sr-only"></span></a>
-        <a class="nav-item nav-link active" href="/coches">Administrar Coches<span class="sr-only"></span></a>
-        <a class="nav-item nav-link active" href="/marcas">Listado Marcas<span class="sr-only"></span></a>
-        <a class="nav-item nav-link active" href="/incidentes">Listado Incidentes<span class="sr-only"></span></a>
-        <a class="nav-item nav-link active" href="/contacto">Contacto<span class="sr-only"></span></a>
-        <a class="nav-item nav-link active" href="/incidentes/registro">Registro Incidente<span class="sr-only"></span></a>
-        <a class="nav-item nav-link active" href="/alquiler">Alquiler<span class="sr-only"></span></a>
+            @if(Auth::user()->typeUser == 'Administrador')
+            <a class="nav-item nav-link active" href="/usuarios">Administrar Usuarios<span class="sr-only"></span></a>
+            <a class="nav-item nav-link active" href="/concesionario">Administrar Concesionarios<span class="sr-only"></span></a>
+            <a class="nav-item nav-link active" href="/coches">Administrar Coches<span class="sr-only"></span></a>
+            <a class="nav-item nav-link active" href="/marcas">Listado Marcas<span class="sr-only"></span></a>
+            <a class="nav-item nav-link active" href="/incidentes">Listado Incidentes<span class="sr-only"></span></a>
+            <a class="nav-item nav-link active" href="/incidentes/registro">Registro Incidente<span class="sr-only"></span></a>
+            @endif
+            @if(Auth::user()->typeUser == 'Cliente')
+                <a class="nav-item nav-link active" href="/alquiler">Alquiler<span class="sr-only"></span></a>
+            @endif
         @endif
         @guest
         <div class="navbar-nav ml-auto">
@@ -72,7 +75,7 @@
                     </form>
                 
                 <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ action('UsersController@getPerfilUser', [Auth::user()->id]) }}">Perfil</a>
+                    <a class="dropdown-item" href="{{ action('UsersController@getPerfilUser') }}">Perfil</a>
                 
                 </div>
             </li>

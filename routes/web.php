@@ -16,6 +16,13 @@ use App\Car;
 Route::get('/', function () {
     return view('paginaprincipal');
 });
+
+Route::get('/contacto', function () {
+    return view('paginaContacto');
+});
+
+Route::get('/flotaCoches', 'CarController@soloCars');
+
 //Rutas no registrado
 Route::middleware('guest')->group(function(){
 Route::get('coches', 'CarController@getAllCar');

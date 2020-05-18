@@ -21,6 +21,8 @@ Route::get('/contacto', function () {
     return view('paginaContacto');
 });
 
+Route::get('/flotaCoches', 'CarController@soloCars');
+
 //////////RUTAS COCHES//////////
 ////////////////////////////////
 //Rutas obtener coches

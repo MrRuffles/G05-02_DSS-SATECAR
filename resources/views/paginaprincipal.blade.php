@@ -26,7 +26,7 @@
 </p>
 <div align="center">
   <p>
-  <a type="button" class="btn btn-primary btn-lg" href="/coches">Mostrar coches</a>
+  <a type="button" class="btn btn-primary btn-lg" href="/flotaCoches">Mostrar coches</a>
   <a type="button" class="btn btn-primary btn-lg" href="/concesionario">Mostrar concesionarios</a>
   </p>
 </div> 

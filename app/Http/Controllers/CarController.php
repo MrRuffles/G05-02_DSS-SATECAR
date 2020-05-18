@@ -7,7 +7,7 @@ use App\Incident;
 use App\Car;
 use App\Brand;
 use App\Concessionaire;
-use App\DB;
+use DB;
 class CarController extends Controller {
     
     public function getAllCar(){
@@ -110,5 +110,10 @@ class CarController extends Controller {
         $car->save();
         return redirect("/coches/{$id}");
 
+    }
+    //$clients_rented = DB::select('SELECT DISTINCT name, users.id FROM users, rents WHERE users.id = rents.user_id ');
+    public function soloCars(){
+        $coches = DB::select('Select cars.*, brands.name as marca FROM cars, brands');
+        return view('soloCoches')->with('cars', $coches);
     }
 }

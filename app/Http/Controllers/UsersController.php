@@ -141,7 +141,12 @@ class UsersController extends Controller
         ]);
         $usuario = User::getUserById($id);
         User::updateUser($request, $usuario);
-        return redirect()->action('UsersController@getPerfilUserAdmin', $id);
+        if(Auth::user()->id != $id){
+            return redirect()->action('UsersController@getPerfilUserAdmin', $id);
+        }
+        else{
+            return redirect()->action('UsersController@getPerfilUser');
+        }
     }
     // AHORA MISMO NO SE PUEDEN BORRAR USUARIOS QUE TENGAN UN COCHE ALQUILADO, PRIMERO TENEMOS QUE ELIMINAR EL QUE ESTE ALQUILADO
     public function delete(Request $request, $id){

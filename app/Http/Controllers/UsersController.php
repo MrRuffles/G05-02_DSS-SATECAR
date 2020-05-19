@@ -59,7 +59,7 @@ class UsersController extends Controller
     // /usuario/editar
     public function getUpdateUser(){
         $id = Auth::user()->id;
-        echo $id . "    ENTROOOOOO111111";
+        //echo $id . "    ENTROOOOOO111111";
         $usuario = User::getUserById($id);
         return view('editarUsuario')->with('usuario', $usuario);
     }
@@ -143,7 +143,7 @@ class UsersController extends Controller
         echo $id;
         $usuario = User::getUserById($id);
         User::updateUser($request, $usuario);
-        return redirect()->action('UsersController@getPerfilUser', $id);
+        return redirect()->action('UsersController@getPerfilUserAdmin', $id);
     }
     // AHORA MISMO NO SE PUEDEN BORRAR USUARIOS QUE TENGAN UN COCHE ALQUILADO, PRIMERO TENEMOS QUE ELIMINAR EL QUE ESTE ALQUILADO
     public function delete(Request $request, $id){

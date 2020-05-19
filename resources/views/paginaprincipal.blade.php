@@ -48,7 +48,7 @@
 <p>
   <div align="center">
     <h4>Información de nuestro proyecto</h4>
-    <a type="button" class="btn btn-info" href="#">Información del proyecto<span class="sr-only"></span></a>
+    <a type="button" class="btn btn-info" href="/informacion">Información del proyecto</a>
   </div>
 </p>
 <p>

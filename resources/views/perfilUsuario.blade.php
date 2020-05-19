@@ -15,16 +15,18 @@
     document.getElementById("resultadoSaldoNuevoMasSaldo").innerHTML="<h6>Saldo nuevo: " + aux + "€ </h6>";
   }
 </script>
+@if(Session::has('mensaje'))
+	<div>{{Session::get('mensaje')}}</div>
+@endif
 <h3>Perfil de {{ $usuario->name }} {{ $usuario->surnames }} </h3>
 <div  style="padding: 10px; border-style: dashed; border-width: 1px; margin-bottom: 11px">
     <div class="row" style="justify-content: space-between; margin:0px">
-      DNI: {{ $usuario->dni }}
+    <label>DNI: {{ $usuario->dni }}</label>
         <div>
             @if(Auth::user()->typeUser == 'Cliente')
               <a href="/usuario/editar" type="button" class="btn btn-primary">Editar Perfil</a>
             @elseif (Auth::user()->typeUser == 'Administrador')
               <a href="/usuario/{{$usuario->id}}/editar" type="button" class="btn btn-primary">Editar Perfil</a>
-              
             @endif
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                 Eliminar Perfil

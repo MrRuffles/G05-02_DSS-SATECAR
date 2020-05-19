@@ -3,22 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Session\SessionManager;
 use App\Car;
 use Carbon\Carbon;
 use Auth;
 use DB;
 class RentsController extends Controller
 {
-    public function getRent(){
-        $coches_disponibles = array();
-        $fecha_inicio = "";
-        $fecha_final = "";
-        return view('alquiler')->with('dias', 0)
-        ->with('coches_disponibles', $coches_disponibles)
-        ->with('fecha_inicio', $fecha_inicio)
-        ->with('fecha_final', $fecha_final)
-        ->with('precio', -1)
-        ->with('idCoche', -1);
+    public function getRent(SessionManager $sessionManager){
+        if(Auth::user()->balance < 0){
+            //echo "NO PUEDES ALQUILAR COCHES TIENES DEUDAS, AÑADE SALDO";
+            $sessionManager->flash('mensaje', 'NO PUEDES ALQUILAR COCHES TIENES DEUDAS, AÑADE SALDO');
+            return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
+        }
+        else{
+            $coches_disponibles = array();
+            $fecha_inicio = "";
+            $fecha_final = "";
+            return view('alquiler')->with('dias', 0)
+            ->with('coches_disponibles', $coches_disponibles)
+            ->with('fecha_inicio', $fecha_inicio)
+            ->with('fecha_final', $fecha_final)
+            ->with('precio', -1)
+            ->with('idCoche', -1);
+        }
     }
 
     public function getDateOfRent(){
@@ -80,7 +88,8 @@ class RentsController extends Controller
             $coche_alquilado->available = false;
             $coche_alquilado->save();
             DB::commit();
-            return redirect()->action('RentsController@getRent');
+            //return redirect()->action('RentsController@getRent');
+            return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
         }
         else{
             // no se realiza el alquiler

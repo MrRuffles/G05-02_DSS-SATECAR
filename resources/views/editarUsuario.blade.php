@@ -100,21 +100,6 @@
             </label>
         </div>
         @endif
-        @if($usuario->typeUser == 'Vendedor')
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios2" value="Vendedor" checked>
-            <label class="form-check-label" for="exampleRadios2">
-                Vendedor
-            </label>
-        </div>
-        @else
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios2" value="Vendedor">
-            <label class="form-check-label" for="exampleRadios2">
-                Vendedor
-            </label>
-        </div>
-        @endif
         @if($usuario->typeUser == 'Cliente')
         <div class="form-check">
             <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios3" value="Cliente" checked>

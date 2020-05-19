@@ -129,7 +129,6 @@ class UsersController extends Controller
     }
 
     public function update(Request $request, $id){ 
-        echo "ENTROOOOOOOO222";
         $this->validate($request, [
             'dni' => 'required|max:9|min:9',
             'name' => 'required|max:100',
@@ -140,7 +139,6 @@ class UsersController extends Controller
             'adress' => 'required|max:100',
             'typeUser' => 'required'
         ]);
-        echo $id;
         $usuario = User::getUserById($id);
         User::updateUser($request, $usuario);
         return redirect()->action('UsersController@getPerfilUserAdmin', $id);

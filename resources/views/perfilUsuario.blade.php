@@ -113,6 +113,7 @@
                               <th>Matrícula</th>
                               <th>Fecha de alquiler</th>
                               <th>Accion</th>
+                              <th>Ver Coche</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -128,6 +129,9 @@
                                       <input name="_method" type="hidden">
                                       <button type="submit" class="btn btn-success">Devolver</button>
                                   </form>
+                                </td>
+                                <td>
+                                  <a type="button" href="/coches/{{ $dato_coche->id }}" class="btn btn-warning">Ver</a>
                                 </td>
                               </tr>
                             @endif

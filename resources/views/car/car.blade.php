@@ -1,6 +1,8 @@
 @extends('barradenavegacion')
 @section('content')
+@if(Auth::user()->typeUser == 'Administrador')
 <a href="/coches" type="button" class="btn btn-link btn-lg btn-block">Coches Registrados</a> 
+@endif
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -32,11 +34,12 @@
 </tbody>
 
 </table>
+@if(Auth::user()->typeUser == 'Administrador')
 <td><a href="/coches/{{$car->id}}/editar" type="button" class="btn btn-success btn-sm">Editar</a> </td>
 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
   Eliminar
 </button>
-
+@endif
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -92,4 +95,10 @@
         {{ $accidentes->links() }}
 </div>
 @endif
+@if(Auth::user()->typeUser == 'Cliente')
+  <div>
+    <a type="button" href="/usuario" class="btn btn-success">Atras</a>
+  </div>
+@endif
+
 @endsection

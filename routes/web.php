@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/usuario/{id_usuario}/{id_coche}/devolver', 'UsersController@giveBack');
     Route::get('/usuario', 'UsersController@getPerfilUser');
     Route::post('/usuario/{id}/editar', 'UsersController@update');
+    Route::get('/coches/{id}', 'CarController@getCar');
 });
 
 Route::middleware('client')->group(function(){
@@ -64,7 +65,7 @@ Route::middleware('client')->group(function(){
 Route::middleware('admin')->group(function(){
     Route::get('/usuario/{id}', 'UsersController@getPerfilUserAdmin'); // Devuelve la vista del perfil del usuario
     Route::post('/usuarios', 'UsersController@find'); // Realiza la busqueda por 2 campos distintos
-    Route::get('/coches/{id}', 'CarController@getCar');
+    //Route::get('/coches/{id}', 'CarController@getCar');
     //Rutas añadir coche    
     Route::get('/añadir' , 'CarController@addCar');
     Route::post('/añadir' , 'CarController@saveCar');

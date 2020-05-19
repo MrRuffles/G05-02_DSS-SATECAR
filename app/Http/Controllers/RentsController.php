@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Session\SessionManager;
 use App\Car;
@@ -65,7 +64,7 @@ class RentsController extends Controller
         ->with('idCoche', $idCoche);
     }
 
-    public function confirmRent($idCoche, $coste_alquiler, $fecha_i, $fecha_f){
+    public function confirmRent(SessionManager $sessionManager, $idCoche, $coste_alquiler, $fecha_i, $fecha_f){
          // TENGO QUE RESTARLE AL USUARIO EL SALDO CORRESPONDIENTE Y CAMBIAR EL AVAILABLE DEL COCHE A FALSE
          /*
             Necesito
@@ -94,8 +93,10 @@ class RentsController extends Controller
         else{
             // no se realiza el alquiler
             //DB::table('rents')->where('car_id', '=', $idCoche)->where('user_id', '=', Auth::user()->id)->delete();
+            $sessionManager->flash('mensaje', 'NO TIENES SUFICIENTE SALDO PARA HACER EL ALQUILER, CARGA TU CUENTA.');
             DB::rollback();
-            return redirect('/');
+            return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
+
         }
     }
 

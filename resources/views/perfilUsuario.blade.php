@@ -103,6 +103,8 @@
           </div>
         </div>
       </div>
+@endif
+@if(Auth::user()->typeUser == 'Cliente')
       @if($coches != '[]')
           <h3>Coches Alquilados</h3>
               <div>
@@ -112,7 +114,9 @@
                           <tr>
                               <th>Matrícula</th>
                               <th>Fecha de alquiler</th>
-                              <th>Accion</th>
+                              @if(Auth::user()->typeUser == 'Cliente')
+                                <th>Accion</th>
+                              @endif
                               <th>Ver Coche</th>
                           </tr>
                       </thead>
@@ -123,6 +127,7 @@
                               <tr>
                                 <td scope="row">{{$dato_coche->enrollment}}</td>
                                 <td>{{$coche->date}}</td>
+                                @if(Auth::user()->typeUser == 'Cliente')
                                 <td>
                                   <form action="{{ action('UsersController@giveBack', [$usuario->id, $dato_coche->id]) }}" method="POST" role="form">
                                       {{ csrf_field() }}
@@ -130,6 +135,7 @@
                                       <button type="submit" class="btn btn-success">Devolver</button>
                                   </form>
                                 </td>
+                                @endif
                                 <td>
                                   <a type="button" href="/coches/{{ $dato_coche->id }}" class="btn btn-warning">Ver</a>
                                 </td>

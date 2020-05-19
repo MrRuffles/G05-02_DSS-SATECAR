@@ -30,7 +30,7 @@ Route::get('/concesionarios', 'ConcessionaireController@getAllConcesionarios');
 //Route::get('/informacion', 'HomeController@informacion');
 //Rutas no registrado
 Route::middleware('guest')->group(function(){
-    Route::get('coches', 'CarController@getAllCar');
+    //Route::get('coches', 'CarController@getAllCar');
     //Route::get('/concesionario', 'ConcessionaireController@getAllConcessionaire');
     Route::get('/registroInicial', 'UsersController@getRegistroInicial'); // Devuelve la pagina que crea un nuevo usuario
     Route::post('/registroInicial', 'UsersController@storeInicial'); // Realiza la accion de crear un usuario
@@ -38,12 +38,12 @@ Route::middleware('guest')->group(function(){
     //Route::get('/flotaCoches', 'CarController@soloCars');
 });
 Route::middleware('auth')->group(function(){
-    Route::get('coches', 'CarController@getAllCar');
+    //Route::get('coches', 'CarController@getAllCar');
     //Route::get('/concesionario', 'ConcessionaireController@getAllConcessionaire');
     //Route::get('/usuario/editar', 'UsersController@getUpdateUser'); // Devuelve la vista de la pagina para editar los datos
     //Route::post('/usuario/{id}/editar', 'UsersController@update'); // Realiza la acción de editar los datos
     Route::post('/usuario/{id}/borrar', 'UsersController@delete'); // Realiza la acción de borrar los datos
-    Route::post('/usuario/{id_usuario}/{id_coche}/devolver', 'UsersController@giveBack');
+   // Route::post('/usuario/{id_usuario}/{id_coche}/devolver', 'UsersController@giveBack');
     Route::get('/usuario', 'UsersController@getPerfilUser');
     Route::post('/usuario/{id}/editar', 'UsersController@update');
     Route::get('/coches/{id}', 'CarController@getCar');
@@ -59,10 +59,12 @@ Route::middleware('client')->group(function(){
     Route::put('/usuario/{id}', 'UsersController@addSaldo'); // Realiza la acción de añadir saldo
     Route::get('/usuario/editar', 'UsersController@getUpdateUser'); // Devuelve la vista de la pagina para editar los datos
     //Route::post('/usuario/{id}/editar', 'UsersController@update');
+    Route::post('/usuario/{id_usuario}/{id_coche}/devolver', 'UsersController@giveBack');
 });
 
 //Rutas administrador
 Route::middleware('admin')->group(function(){
+    Route::get('coches', 'CarController@getAllCar');
     Route::get('/usuario/{id}', 'UsersController@getPerfilUserAdmin'); // Devuelve la vista del perfil del usuario
     Route::post('/usuarios', 'UsersController@find'); // Realiza la busqueda por 2 campos distintos
     //Route::get('/coches/{id}', 'CarController@getCar');

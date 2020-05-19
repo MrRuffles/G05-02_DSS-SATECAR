@@ -133,7 +133,11 @@
     </div>
     <div>
         <button type="submit" class="btn btn-primary btn-lg">Confirmar</button>
-        <a type="button" href="/usuario/{{ $usuario->id }}" class="btn btn-secondary btn-lg">Cancelar</a>
+        @if(Auth::user()->typeUser == 'Administrador')
+            <a type="button" href="/usuario/{{ $usuario->id }}" class="btn btn-secondary btn-lg">Cancelar</a>
+        @elseif(Auth::user()->typeUser == 'Cliente')
+            <a type="button" href="/usuario" class="btn btn-secondary btn-lg">Cancelar</a>
+        @endif
     </div>
 </form>
 @endsection

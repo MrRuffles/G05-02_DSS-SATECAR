@@ -56,14 +56,14 @@ class UsersController extends Controller
                                     ->with('coches', $coches_alquilados)
                                     ->with('datos_coche', $datos_concretos_coches);
     }
-
+    // /usuario/editar
     public function getUpdateUser(){
         $id = Auth::user()->id;
+        echo $id . "    ENTROOOOOO111111";
         $usuario = User::getUserById($id);
         return view('editarUsuario')->with('usuario', $usuario);
-        
     }
-
+    // /usuario/{id}/editar
     public function getUpdateUserAdmin($id){
         //$id = Auth::user()->id;
         $usuario = User::getUserById($id);
@@ -129,16 +129,16 @@ class UsersController extends Controller
     }
 
     public function update(Request $request, $id){ 
-        echo $id;
+        echo "ENTROOOOOOOO222";
         $this->validate($request, [
             'dni' => 'required|max:9|min:9',
             'name' => 'required|max:100',
             'surnames' => 'required|max:100',
             'email' => 'required|email',
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            //'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone' => 'required|max:9|min:9',
             'adress' => 'required|max:100',
-            'typeUser' => 'required',
+            'typeUser' => 'required'
         ]);
         echo $id;
         $usuario = User::getUserById($id);

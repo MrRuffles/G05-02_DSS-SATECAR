@@ -18,7 +18,7 @@
 <h3>Perfil de {{ $usuario->name }} {{ $usuario->surnames }} </h3>
 <div  style="padding: 10px; border-style: dashed; border-width: 1px; margin-bottom: 11px">
     <div class="row" style="justify-content: space-between; margin:0px">
-        <label>DNI: {{ $usuario->dni }}</label>
+      DNI: {{ $usuario->dni }}
         <div>
             @if(Auth::user()->typeUser == 'Cliente')
               <a href="/usuario/editar" type="button" class="btn btn-primary">Editar Perfil</a>

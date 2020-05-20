@@ -73,7 +73,7 @@ class RentsController extends Controller
                 -> idVehiculo
          */
         //$saldo_usuario = Auth::user()->balance;
-        DB::beginTransaction();
+        /*DB::beginTransaction();
         if(Auth::user()->balance >= $coste_alquiler){
             DB::table('rents')->insert([
                 'car_id' => $idCoche,
@@ -97,6 +97,29 @@ class RentsController extends Controller
             DB::rollback();
             return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
 
+        }*/
+
+        DB::beginTransaction();
+        $user_balance_aux = Auth::user()->balance;
+        DB::table('rents')->insert([
+            'car_id' => $idCoche,
+            'user_id' => Auth::user()->id,
+            'date' => Carbon::parse($fecha_i),
+            'date_end' => Carbon::parse($fecha_f)
+        ]);
+        Auth::user()->balance -= $coste_alquiler;
+        Auth::user()->save();
+        $coche_alquilado = Car::getCarById($idCoche);
+        $coche_alquilado->available = false;
+        $coche_alquilado->save();
+        if($user_balance_aux < $coste_alquiler){
+            DB::rollback();
+            $sessionManager->flash('mensaje', 'NO TIENES SUFICIENTE SALDO PARA HACER EL ALQUILER, CARGA TU CUENTA.');
+            return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
+        }
+        else{
+            DB::commit();
+            return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
         }
     }
 

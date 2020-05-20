@@ -118,6 +118,8 @@
     </div>
     <div>
         <button type="submit" class="btn btn-primary btn-lg">Confirmar</button>
+        
+        
         @if(Auth::user()->typeUser == 'Administrador')
             <a type="button" href="/usuario/{{ $usuario->id }}" class="btn btn-secondary btn-lg">Cancelar</a>
         @elseif(Auth::user()->typeUser == 'Cliente')

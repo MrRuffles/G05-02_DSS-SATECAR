@@ -104,7 +104,6 @@
         </div>
       </div>
 @endif
-@if(Auth::user()->typeUser == 'Cliente')
       @if($coches != '[]')
           <h3>Coches Alquilados</h3>
               <div>
@@ -149,5 +148,4 @@
               </div>
       </div>
     @endif
-@endif
 @endsection

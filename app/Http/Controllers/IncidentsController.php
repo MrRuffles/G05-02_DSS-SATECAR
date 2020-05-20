@@ -81,9 +81,10 @@ class IncidentsController extends Controller
             ]);
         $usuario = User::getUserById($idUsuario);
         //if($balanceUs == null){
-            $balanceUs = 0;
+            //$balanceUs = 0;
         //}
-        $usuario->balance =  $balanceUs - $priceInc;
+        //$usuario->balance =  $balanceUs - $priceInc;
+        $usuario->balance -= $priceInc;
         $usuario->save();
         DB::commit();
         return redirect()->action('IncidentsController@getClients');

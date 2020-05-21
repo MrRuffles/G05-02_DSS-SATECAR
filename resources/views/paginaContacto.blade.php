@@ -1,6 +1,6 @@
 @extends('barradenavegacion')
 @section('content')
-<h1>SATECAR</h1>
+<h1 align="center">SATECAR</h1>
 <p>
     <h3 align="center">Contacta con nosotros</h3>
 </p>

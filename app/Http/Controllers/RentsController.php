@@ -1,24 +1,31 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Session\SessionManager;
 use App\Car;
 use Carbon\Carbon;
 use Auth;
 use DB;
 class RentsController extends Controller
 {
-    public function getRent(){
-        $coches_disponibles = array();
-        $fecha_inicio = "";
-        $fecha_final = "";
-        return view('alquiler')->with('dias', 0)
-        ->with('coches_disponibles', $coches_disponibles)
-        ->with('fecha_inicio', $fecha_inicio)
-        ->with('fecha_final', $fecha_final)
-        ->with('precio', -1)
-        ->with('idCoche', -1);
+    public function getRent(SessionManager $sessionManager){
+        if(Auth::user()->balance < 0){
+            //echo "NO PUEDES ALQUILAR COCHES TIENES DEUDAS, AÑADE SALDO";
+            $sessionManager->flash('mensaje', 'NO PUEDES ALQUILAR COCHES TIENES DEUDAS, AÑADE SALDO');
+            return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
+        }
+        else{
+            $coches_disponibles = array();
+            $fecha_inicio = "";
+            $fecha_final = "";
+            return view('alquiler')->with('dias', 0)
+            ->with('coches_disponibles', $coches_disponibles)
+            ->with('fecha_inicio', $fecha_inicio)
+            ->with('fecha_final', $fecha_final)
+            ->with('precio', -1)
+            ->with('idCoche', -1);
+        }
     }
 
     public function getDateOfRent(){
@@ -57,7 +64,7 @@ class RentsController extends Controller
         ->with('idCoche', $idCoche);
     }
 
-    public function confirmRent($idCoche, $coste_alquiler, $fecha_i, $fecha_f){
+    public function confirmRent(SessionManager $sessionManager, $idCoche, $coste_alquiler, $fecha_i, $fecha_f){
          // TENGO QUE RESTARLE AL USUARIO EL SALDO CORRESPONDIENTE Y CAMBIAR EL AVAILABLE DEL COCHE A FALSE
          /*
             Necesito
@@ -66,7 +73,7 @@ class RentsController extends Controller
                 -> idVehiculo
          */
         //$saldo_usuario = Auth::user()->balance;
-        DB::beginTransaction();
+        /*DB::beginTransaction();
         if(Auth::user()->balance >= $coste_alquiler){
             DB::table('rents')->insert([
                 'car_id' => $idCoche,
@@ -80,13 +87,39 @@ class RentsController extends Controller
             $coche_alquilado->available = false;
             $coche_alquilado->save();
             DB::commit();
-            return redirect()->action('RentsController@getRent');
+            //return redirect()->action('RentsController@getRent');
+            return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
         }
         else{
             // no se realiza el alquiler
             //DB::table('rents')->where('car_id', '=', $idCoche)->where('user_id', '=', Auth::user()->id)->delete();
+            $sessionManager->flash('mensaje', 'NO TIENES SUFICIENTE SALDO PARA HACER EL ALQUILER, CARGA TU CUENTA.');
             DB::rollback();
-            return redirect('/');
+            return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
+
+        }*/
+
+        DB::beginTransaction();
+        $user_balance_aux = Auth::user()->balance;
+        DB::table('rents')->insert([
+            'car_id' => $idCoche,
+            'user_id' => Auth::user()->id,
+            'date' => Carbon::parse($fecha_i),
+            'date_end' => Carbon::parse($fecha_f)
+        ]);
+        Auth::user()->balance -= $coste_alquiler;
+        Auth::user()->save();
+        $coche_alquilado = Car::getCarById($idCoche);
+        $coche_alquilado->available = false;
+        $coche_alquilado->save();
+        if($user_balance_aux < $coste_alquiler){
+            DB::rollback();
+            $sessionManager->flash('mensaje', 'NO TIENES SUFICIENTE SALDO PARA HACER EL ALQUILER, CARGA TU CUENTA.');
+            return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
+        }
+        else{
+            DB::commit();
+            return redirect()->action('UsersController@getPerfilUser', Auth::user()->id);
         }
     }
 

@@ -1,6 +1,6 @@
 @extends('barradenavegacion')
 @section('content')
-<h1>SATECAR</h1>
+<h1 align="center">SATECAR</h1>
 <p>
 <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
@@ -27,7 +27,7 @@
 <div align="center">
   <p>
   <a type="button" class="btn btn-primary btn-lg" href="/flotaCoches">Mostrar coches</a>
-  <a type="button" class="btn btn-primary btn-lg" href="/concesionario">Mostrar concesionarios</a>
+  <a type="button" class="btn btn-primary btn-lg" href="/concesionarios">Mostrar concesionarios</a>
   </p>
 </div> 
 <p>
@@ -38,6 +38,18 @@
     En nuestra página encontraras la mayor cantidad de coches para alquilar, desde
     modelos de gama alta, para la gente que le gustas las emociones fuertes y la velocidad,
     hasta modelos de gama mas económica para los conductores que necesitan un vehiculo para su dia a dia.
+</p>
+<p>
+  <div align="center">
+    <h4>Contacta con nosotros</h4>
+    <a type="button" class="btn btn-success" href="/contacto">Contacto</a>
+  </div>
+</p>
+<p>
+  <div align="center">
+    <h4>Información de nuestro proyecto</h4>
+    <a type="button" class="btn btn-info" href="/informacion">Información del proyecto</a>
+  </div>
 </p>
 <p>
 <a href="https://twitter.com/SateCar?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @SateCar</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

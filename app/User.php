@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use DB;
+use App\Car;
 
 class User extends Authenticatable
 {
@@ -22,7 +23,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'dni','name', 'surnames' , 'adress', 'phone' ,'typeUser' , 'email'
+        'dni','name', 'surnames' , 'adress', 'phone' ,'typeUser' , 'email', 'password'
+
     ];
 
     public $timestamps = false;
@@ -66,6 +68,17 @@ class User extends Authenticatable
         return $coches_alquilados;
     }
 
+    public static function getUsersRentCars(){
+        $clients_rented = array();
+        $clients_rented = DB::select('SELECT DISTINCT name, users.id FROM users, rents WHERE users.id = rents.user_id ');
+        return $clients_rented;
+    }
+    public static function getAllUserRentedCars($idUsuario){
+        $coches_alquilados = DB::select('SELECT rents.car_id, cars.enrollment, brands.name FROM rents, cars, brands WHERE rents.car_id = cars.id AND rents.car_id = brands.id AND rents.user_id = :idUsuario', ['idUsuario' => $idUsuario]);
+        return $coches_alquilados;
+    }
+
+
     public static function updateUser(Request $request, $usuario){
         $usuario->update($request->all());
     }
@@ -75,6 +88,13 @@ class User extends Authenticatable
         $usuarios = array();
         $usuarios = DB::table('users')->where('name', '=', $nombre)->Where('email', '=', $email)->paginate(7);
         return $usuarios;
+    }
+
+    public static function giveBack($id_usuario, $id_coche){
+        DB::table('rents')->where('car_id', '=', $id_coche)->Where('user_id', '=', $id_usuario)->delete();
+        $coche = Car::getCarById($id_coche);
+        $coche->available = true;
+        $coche->save();
     }
  
 }

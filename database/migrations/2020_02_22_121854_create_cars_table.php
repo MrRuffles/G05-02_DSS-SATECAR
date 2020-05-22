@@ -24,10 +24,11 @@ class CreateCarsTable extends Migration
             $table->string('color');
             //Consumo a los 100 km
             $table->float('fuelConsumption');
+            $table->boolean('available')->nullable();
             $table->integer('brand_id')->unsigned();
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->integer('concessionaire_id')->unsigned();
-            $table->foreign('concessionaire_id')->references('id')->on('concessionaires')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('concessionaire_id')->references('id')->on('concessionaires')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

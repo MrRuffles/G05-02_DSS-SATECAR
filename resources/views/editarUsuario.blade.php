@@ -100,21 +100,6 @@
             </label>
         </div>
         @endif
-        @if($usuario->typeUser == 'Vendedor')
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios2" value="Vendedor" checked>
-            <label class="form-check-label" for="exampleRadios2">
-                Vendedor
-            </label>
-        </div>
-        @else
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios2" value="Vendedor">
-            <label class="form-check-label" for="exampleRadios2">
-                Vendedor
-            </label>
-        </div>
-        @endif
         @if($usuario->typeUser == 'Cliente')
         <div class="form-check">
             <input class="form-check-input" type="radio" name="typeUser" id="exampleRadios3" value="Cliente" checked>
@@ -133,7 +118,13 @@
     </div>
     <div>
         <button type="submit" class="btn btn-primary btn-lg">Confirmar</button>
-        <a type="button" href="/usuario/{{ $usuario->id }}" class="btn btn-secondary btn-lg">Cancelar</a>
+        
+        
+        @if(Auth::user()->typeUser == 'Administrador')
+            <a type="button" href="/usuario/{{ $usuario->id }}" class="btn btn-secondary btn-lg">Cancelar</a>
+        @elseif(Auth::user()->typeUser == 'Cliente')
+            <a type="button" href="/usuario" class="btn btn-secondary btn-lg">Cancelar</a>
+        @endif
     </div>
 </form>
 @endsection

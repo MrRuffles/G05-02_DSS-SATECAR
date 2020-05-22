@@ -23,6 +23,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => '4x4',
             'color' => 'blue',
             'fuelConsumption' => '5.6',
+            'available' => false,
             'brand_id' => Brand::where('name', 'Abarth')->first()->id,
             'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
         );
@@ -34,6 +35,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => '4x4',
             'color' => 'red',
             'fuelConsumption' => '5.6',
+            'available' => true,
             'brand_id' => Brand::where('name', 'Abarth')->first()->id,
             'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
         );
@@ -45,6 +47,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => 'ranchera',
             'color' => 'black',
             'fuelConsumption' => '7.2',
+            'available' => false,
             'brand_id' => Brand::where('name', 'Dacia')->first()->id,
             'concessionaire_id' => Concessionaire::where('name', 'Grupo Marcos')->first()->id]
         );
@@ -56,6 +59,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => 'sport',
             'color' => 'white',
             'fuelConsumption' => '9.1',
+            'available' => false,
             'brand_id' => Brand::where('name', 'Bentley')->first()->id,
             'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
         );
@@ -67,6 +71,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => '4x4',
             'color' => 'red',
             'fuelConsumption' => '12',
+            'available' => false,
             'brand_id' => Brand::where('name', 'Bugatti')->first()->id,
             'concessionaire_id' => Concessionaire::where('name', 'Grupo Marcos')->first()->id]
         );
@@ -78,6 +83,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => 'sport',
             'color' => 'white',
             'fuelConsumption' => '9.1',
+            'available' => false,
             'brand_id' => Brand::where('name', 'Aston Martin')->first()->id,
             'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
         );
@@ -89,6 +95,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => 'SUB',
             'color' => 'grey',
             'fuelConsumption' => '9.6',
+            'available' => false,
             'brand_id' => Brand::where('name', 'Mercedes-Benz')->first()->id,
             'concessionaire_id' => Concessionaire::where('name', 'Grupo Marcos')->first()->id]
         );
@@ -100,6 +107,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => 'SUB',
             'color' => 'grey',
             'fuelConsumption' => '9.6',
+            'available' => true,
             'brand_id' => Brand::where('name', 'Mercedes-Benz')->first()->id,
             'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
         );
@@ -111,6 +119,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => 'Cabrio',
             'color' => 'white',
             'fuelConsumption' => '6.1',
+            'available' => false,
             'brand_id' => Brand::where('name', 'Volkswagen')->first()->id,
             'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
         );
@@ -122,6 +131,7 @@ class CarsTableSeeder extends Seeder
             'tradeMark' => 'Coupe',
             'color' => 'black',
             'fuelConsumption' => '6.4',
+            'available' => true,
             'brand_id' => Brand::where('name', 'Volvo')->first()->id,
             'concessionaire_id' => Concessionaire::where('name', 'Hijos de Manuel Crespo')->first()->id]
         );

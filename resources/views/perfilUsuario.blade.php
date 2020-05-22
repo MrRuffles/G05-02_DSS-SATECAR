@@ -38,6 +38,30 @@
     <p>Correo Electronico: {{ $usuario->email }}</p>
     <h3>Tipo de Usuario: {{ $usuario->typeUser }}</h3>
 </div>
+<!-- MODAL DEL BOTON DE BORRAR PERFIL -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Borrar Perfil</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              *Esta acción es irreversible, no se podran recuperar los datos borrados
+            </div>
+            <div class="modal-footer">
+            <form action="{{ action('UsersController@delete', $usuario->id) }}" method="POST">
+              {{ csrf_field() }}
+              <input name="_method" type="hidden" value="POST">
+              <button type="submit" class="btn btn-danger">Aceptar</button>
+            </form>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 @if(Auth::user()->typeUser == 'Cliente')
       <div>
       <form action="{{ action('UsersController@addSaldo', $usuario->id) }}" method="POST" > 
@@ -78,30 +102,6 @@
                     </div>
                   </div>
                 </form>
-      </div>
-      <!-- MODAL DEL BOTON DE BORRAR PERFIL -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Borrar Perfil</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              *Esta acción es irreversible, no se podran recuperar los datos borrados
-            </div>
-            <div class="modal-footer">
-            <form action="{{ action('UsersController@delete', $usuario->id) }}" method="POST">
-              {{ csrf_field() }}
-              <input name="_method" type="hidden" value="POST">
-              <button type="submit" class="btn btn-danger">Aceptar</button>
-            </form>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-            </div>
-          </div>
-        </div>
       </div>
 @endif
 @if(Auth::user()->typeUser == 'Administrador' && Auth::user()->id == $usuario->id)

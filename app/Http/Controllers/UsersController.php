@@ -16,7 +16,7 @@ class UsersController extends Controller
 {
     public function getPerfilUserAdmin($id){
         //$id = Auth::user()->id;
-        echo $id;
+        //echo $id;
         $usuario = User::getUserById($id);
         $coches_alquilados = User::getAllUserRent($id); // Tengo el id de todos los coches alquilados y su fecha de alquiler
         $datos_concretos_coches = array();

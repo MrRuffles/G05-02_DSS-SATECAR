@@ -104,7 +104,9 @@
         </div>
       </div>
 @endif
-      @if($coches != '[]')
+@if(Auth::user()->typeUser == 'Administrador' && Auth::user()->id == $usuario->id)
+@else
+@if($coches != '[]')
           <h3>Coches Alquilados</h3>
               <div>
                   <div id="tablaDeCoches"> 
@@ -148,4 +150,5 @@
               </div>
       </div>
     @endif
+@endif
 @endsection
